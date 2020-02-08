@@ -1,0 +1,45 @@
+briooz_compra_index:
+    path:     /
+    defaults: { _controller: BrioozVentasBundle:Compras:index }
+    
+briooz_compra_delete:
+    path:     /delete
+    defaults: { _controller: BrioozVentasBundle:Compras:delete}
+    methods: [POST,DELETE]
+    
+briooz_compra_add:
+    path:     /add
+    defaults: { _controller: BrioozVentasBundle:Compras:add }
+    
+briooz_compra_creado:
+    path:     /compracreada
+    defaults: { _controller: BrioozVentasBundle:Compras:creado}
+    methods: POST
+    
+briooz_compra_buscar_cliente:
+    path:     /comprabuscarcliente
+    defaults: { _controller: BrioozVentasBundle:Compras:buscarcliente}
+    methods: POST
+      
+briooz_compra_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozVentasBundle:Compras:edit,id: null }
+    
+briooz_compra_ver:
+    path:     /ver/{id}
+    defaults: { _controller: BrioozVentasBundle:Compras:ver }
+    
+briooz_compra_update:
+    path:     /update
+    defaults: { _controller: BrioozVentasBundle:Compras:update }
+    methods: [POST, PUT]
+    
+briooz_compra_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozVentasBundle:Compras:edit
+        path: /compras/edit/{id}
+        permanent: true
+
+
+

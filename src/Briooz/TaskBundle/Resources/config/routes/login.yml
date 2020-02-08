@@ -1,0 +1,21 @@
+briooz_usuario_inicio:
+    path:     /
+    defaults:
+        _controller: BrioozTaskBundle:Security:login
+        path: /login
+        permanent: true
+       
+briooz_usuario_homepage:
+    path:     /inicio
+    defaults: { _controller: BrioozTaskBundle:Usuario:home }
+
+briooz_usuario_login:
+    path:     /login
+    defaults: { _controller: BrioozTaskBundle:Security:login }
+
+briooz_usuario_login_check:
+    path:     /login_check
+    defaults: { _controller: BrioozTaskBundle:Security:loginCheck }
+
+briooz_usuario_logout:
+    path:     /logout

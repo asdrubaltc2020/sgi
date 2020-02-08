@@ -1,0 +1,73 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_compra_index')}}">Compras</a> » <strong>Detalles compra</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Detalles compra</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"> <strong>Editar</strong></div>
+            <div class="panel-body">
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-xs-12 col-md-6">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>(*) Lote <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Lote" name="lote" id="lote" class="form-control" value="{{compra.lote}}" readonly="true"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_lote"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Proveedor <i class="fas fa-sort-down"></i></label>
+                                    <select class="form-control" id="proveedor" name="proveedor" readonly="true">
+                                        <option value="0">[ Seleccione el proveedor ]</option>
+                                        {%for proveedor in proveedores%}
+                                            <option value="{{proveedor.id}}" {%if compra.proveedor.id==proveedor.id%}selected{%endif%}>{{proveedor.empresa}}</option>
+                                        {%endfor%}
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Total de Items <i class="fas fa-sort-down"></i></label>
+                                    <input type="number" placeholder="Total de items" name="items" id="items" class="form-control" value="{{compra.items}}" readonly="true"/>
+                                </div> 
+                                <div class="form-group">
+                                    <label>(*) Subtotal <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Subtotal de la compra" name="subtotal" id="subtotal" class="form-control" value="{{compra.subtotal}}" readonly="true"/>
+                                </div> 
+                                <div class="form-group">
+                                    <label>(*) IVA <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="IVA de la compra" name="iva" id="iva" class="form-control" value="{{compra.iva}}" readonly="true"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Total <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Costo Total de la compra" name="total" id="total" class="form-control" value="{{compra.total}}" readonly="true"/>
+                                </div>
+                            </fieltset>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label>(*) Factura <i class="fas fa-sort-down"></i></label>
+                                <input type="text" placeholder="Número de factura" name="factura" id="factura" class="form-control" value="{{compra.factura}}" readonly="true"/>
+                            </div>
+                            <div class="form-group">
+                                <label>(*) Fecha <i class="fas fa-sort-down"></i></label>
+                                <div style="position: relative;">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" value="{{compra.fecha|date('Y-m-d')}}" name="fecha" id="fecha" readonly="true"><span class="input-group-addon" readonly="true"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    </div>
+                                    <div class="contenedor-check hidden" id="check_fecha" style="right: 50px;"><i class="fas fa-check"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    
+{% endblock %}
+
+

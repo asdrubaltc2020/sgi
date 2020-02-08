@@ -1,0 +1,34 @@
+briooz_taco_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Tacos:index }
+    
+briooz_taco_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Tacos:delete}
+    methods: [POST,DELETE]
+    
+briooz_taco_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Tacos:add }
+    
+briooz_taco_creado:
+    path:     /tacoCreado
+    defaults: { _controller: BrioozTaskBundle:Tacos:creado}
+    methods: POST
+    
+briooz_taco_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Tacos:edit,id: null }
+    
+briooz_taco_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Tacos:update }
+    methods: [POST, PUT]
+    
+briooz_taco_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Tacos:edit
+        path: /tacoes/edit/{id}
+        permanent: true
+

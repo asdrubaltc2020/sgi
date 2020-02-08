@@ -1,0 +1,25 @@
+#calendario{
+    display:grid;
+    grid-template-columns: 30px repeat(7,1fr);
+}
+
+#calendario .item{
+    border:1px solid #d7d7d7;
+    border-radius: 0px;
+    -ms-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -o-border-radius: 0px;
+    padding: 5px;
+}
+
+#calendario .item.cabecera{
+    background: #b4b4b4;
+    color:#fff;
+    text-align: center;
+}
+
+#calendario .item.cuerpo{
+    min-height: 100px;
+    background: #fff;
+}

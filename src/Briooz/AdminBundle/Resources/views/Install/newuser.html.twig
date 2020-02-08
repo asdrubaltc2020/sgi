@@ -1,0 +1,28 @@
+{% extends 'install.html.twig' %}
+{% block body %}
+    <section id="titulo-container">
+        <h2>Setup</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Configuración Inicial del sistema</div>
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 5px;height:40px;">
+                    <div class="col-xs-12">  
+                        <a href="{{path('briooz_cliente_index')}}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Cargar todo"><i class="fas fa-sync"></i> Cargar todo</a>
+                        <a href="{{path('briooz_cliente_add')}}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Nuevo cliente"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo cliente</a>
+                    </div>
+                </div>
+               
+                <div class="table-responsive">
+ 
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    
+{% endblock %}

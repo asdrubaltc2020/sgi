@@ -1,0 +1,4 @@
+services:
+#    briooz_email.example:
+#        class: Briooz\EmailBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

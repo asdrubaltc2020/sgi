@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Sistema de Gestión de pedidos{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/nprogress/nprogress.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/animate.css/animate.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/gentelella/build/css/custom.css') }}">
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="login" style="background: #313131;">
+        {% block body %}
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        {% endblock %}
+    </body>
+</html>
+

@@ -1,0 +1,168 @@
+.page-title {
+    padding: 1rem 0;
+}
+
+.content-page{
+  padding: 0 5px;
+}
+
+.table td{
+    padding: 4px 3px;
+}
+
+.table th{
+    padding-left: 5px;
+}
+
+.btn-actions i{
+    font-size: 13px;
+}
+
+.btn-actions{
+    padding: 1px 4px!important;
+}
+
+.dataTables_filter {
+    margin: 0 0 1.25rem 0;
+}
+
+.dataTables_filter input{
+    margin-left: 10px;
+}
+
+.dataTable{
+    margin-bottom: 20px;
+}
+
+.col-form-label{
+    color:#2E5C94;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.card-title{
+    color:#2E5C94;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.form-control{
+    font-size: 15px;
+}
+
+.alert{
+    margin-top: 5px;
+    padding: 5px 15px;
+}
+
+.p_docs{
+    font-weight: 400!important;
+}
+
+.form-check-input-styled-custom{
+    color:#fff;
+    border-color: #fff;
+}
+
+.col-Actions{
+    text-align: right;
+}
+
+.alert-custom-success{
+    position: absolute;
+    width: 100%;
+    padding: 25px 50px;
+    color:#fff;
+    z-index: 200000;
+}
+
+.badge-title{
+  font-size: 20px;
+}
+
+.cont-alert-removed-true,.cont-alert-removed-false{
+    max-width: 100%;
+    width: 100%;
+}
+
+.badge{
+    font-size: 100%;
+}
+
+.nav-tabs {
+    margin-bottom: 5px;
+}
+
+.cont-step-wizard{
+    padding: 40px 0!important;
+}
+
+.p-inline{
+    display: inline-block!important;
+}
+
+.bar_100{
+    width: 100% !important;
+}
+
+links-home{
+    cursor: pointer;
+}
+
+.grid-col-days{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+}
+
+.btn-days{
+     width: 100%;
+    padding-top: 12px!important;
+    padding-bottom: 12px!important;
+    font-size: 16px;
+}
+
+.select-personal{
+    display: inline-block;
+}
+
+.text-card-org{
+    font-size: 14px;
+    color: #0b3251;
+}
+
+.card-header.card-header-org{
+    padding: 5px!important;
+}
+
+.card.card-org{
+    margin-bottom: 2px!important;
+}
+
+.name-title-card{
+    font-size: 13px;
+    text-transform: uppercase;
+    color: #0b3251;
+}
+
+.body_provider_detail{
+    cursor: pointer;
+}
+
+.car_provider_detail:hover{
+
+}
+
+#cont_organization_list{
+    overflow-y: scroll;
+}
+
+.grid-col2-map{
+    display: grid;
+    grid-template-columns: 70% 1fr;
+    grid-gap: 5px;
+}
+
+.grid-col2-map .item2{
+
+}

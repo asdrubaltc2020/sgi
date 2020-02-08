@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Sistema de Gestión de pedidos{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('public/vendors/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link href="{{ asset('public/css/fontawesome-all.min.css') }}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" href="{{ asset('public/vendors/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/nprogress/nprogress.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/jqvmap/dist/jqvmap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/iCheck/skins/flat/green.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/bootstrap-daterangepicker/daterangepicker.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/gentelella/build/css/custom.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/css/bootstrap-datepicker3.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/vendors/switchery/dist/switchery.min.css') }}">
+            <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-grid.css">
+            <link rel="stylesheet" href="https://unpkg.com/ag-grid-community/dist/styles/ag-theme-balham.css">
+            <link rel="stylesheet" href="{{ asset('public/css/fileinput.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('public/css/style.css') }}">
+        {% endblock %}
+    </head>
+    <body class="nav-md">
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div class="container body">
+                <div class="main_container">
+                    <div class="col-md-3 left_col">
+                        <div class="left_col scroll-view">
+                            <div class="navbar nav_title " style="border: 0;">
+                                <a href="/" class="site_title"><span>SGI</span></a>
+                            </div>
+
+                            <div class="clearfix"></div>
+                            <!-- menu profile quick info -->
+                            <div class="profile clearfix">
+                                <div class="profile_pic">
+                                    <img src="{{asset('public/images/perfil-falso.jpg')}}" alt="..." class="img-circle profile_img">
+                                </div>
+                                <div class="profile_info">
+                                    <span>Bienvenid@,</span>
+                                    <h2>{{app.user.nombre}} {{app.user.apellidos}}</h2>
+                                </div>
+                            </div>
+                            <!-- /menu profile quick info -->
+                            <br />
+                            <!-- sidebar menu -->
+                            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                                <div class="menu_section">
+                                    <h3>&nbsp;</h3>
+                                    <ul class="nav side-menu">
+                                        <li><a href="{{path('briooz_usuario_homepage')}}"><i class="fas fa-home"></i> Inicio</a></li>
+                                        <li><a><i class="fas fa-shopping-cart"></i> Ventas <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_venta_add')}}">Nueva venta</a></li>
+                                                <li><a href="{{path('briooz_venta_index')}}">Ventas</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a><i class="fas fa-truck"></i> Compras <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_compra_add')}}">Nueva compra</a></li>
+                                                <li><a href="{{path('briooz_compra_index')}}">Compras</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a><i class="fas fa-box-open"></i> Productos <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_zapato_add')}}">Nuevo Producto</a></li>
+                                                <li><a href="{{path('briooz_zapato_index')}}">Productos</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a><i class="fas fa-user-tag"></i> Contactos <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_proveedor_index')}}">Proveedores</a></li>
+                                                <li><a href="{{path('briooz_cliente_index')}}">Clientes</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a><i class="fas fa-lock"></i> Seguridad <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_usuario_index')}}">Usuarios</a></li>
+                                                <li><a href="{{path('briooz_usuario_index')}}">Logs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a><i class="fas fa-cogs"></i> Administración <span class="fa fa-chevron-down"></span></a>
+                                            <ul class="nav child_menu">
+                                                <li><a href="{{path('briooz_color_index')}}">Colores</a></li>
+                                                <li><a href="{{path('briooz_modelo_index')}}">Modelos</a></li>
+                                                <li><a href="{{path('briooz_taco_index')}}">Tacos</a></li>
+                                                <li><a href="{{path('briooz_bodega_index')}}">Bodegas</a></li>
+                                                <li><a href="{{path('briooz_categoria_index')}}">Categorias</a></li>
+                                                <li><a href="{{path('briooz_deducible_index')}}">Categorias deducibles</a></li>
+                                                <li><a href="{{path('briooz_talla_index')}}">Tallas</a></li>
+                                                <li><a href="{{path('briooz_formapago_index')}}">Formas de Pago</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="{{path('briooz_usuario_logout')}}"><i class="fa fa-power-off"></i> Salir</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- /sidebar menu -->
+                            <!-- /menu footer buttons -->
+                            <div class="sidebar-footer hidden-small">
+                                <a data-toggle="tooltip" data-placement="top" title="Configuración">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                </a>
+                                <a data-toggle="tooltip" data-placement="top" title="Usuarios">
+                                    <i class="fas fa-user-cog"></i>
+                                </a>
+                                <a data-toggle="tooltip" data-placement="top" title="Estadisticas">
+                                    <i class="fa fa-bar-chart-o"></i>
+                                </a>
+                                <a data-toggle="tooltip" data-placement="top" title="Salir" href="{{path('briooz_usuario_logout')}}">
+                                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                                </a>
+                            </div>
+                            <!-- /menu footer buttons -->
+                        </div>
+                    </div>
+                    <!-- top navigation -->
+                    {{ render(controller('BrioozAdminBundle:Notificacion:index')) }}
+                    <!-- /top navigation -->
+                    <!-- page content -->
+                    <div class="right_col" role="main">
+                        {% block body %}
+
+                        {% endblock %} 
+                    </div>
+                    <!-- /page content -->
+
+                    <!-- footer content -->
+                    <footer>
+                        <div class="pull-right">
+                            SISTEMA DE GESTIÓN DE INVENTARIO - BRIOOZ. Todos los derechos reservados {{ "now"|date("Y") }}
+                        </div>
+                        <div class="clearfix"></div>
+                    </footer>
+                    <!-- /footer content -->
+                </div>
+            </div>
+
+            {% block javascripts %}
+                <script src="{{ asset('public/vendors/jquery/dist/jquery.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/fastclick/lib/fastclick.js') }}"></script>
+                <script src="{{ asset('public/vendors/nprogress/nprogress.js') }}"></script>
+                <script src="{{ asset('public/vendors/Chart.js/dist/Chart.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/gauge.js/dist/gauge.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/iCheck/icheck.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/skycons/skycons.js') }}"></script>
+                <script src="{{ asset('public/vendors/skycons/skycons.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.pie.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.pie.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.pie.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.time.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.stack.js') }}"></script>
+                <script src="{{ asset('public/vendors/Flot/jquery.flot.resize.js') }}"></script>
+                <script src="{{ asset('public/vendors/flot.orderbars/js/jquery.flot.orderBars.js') }}"></script>
+                <script src="{{ asset('public/vendors/flot-spline/js/jquery.flot.spline.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/flot.curvedlines/curvedLines.js') }}"></script>
+                <script src="{{ asset('public/vendors/DateJS/build/date.js') }}"></script>
+                <script src="{{ asset('public/vendors/jqvmap/dist/jquery.vmap.js') }}"></script>
+                <script src="{{ asset('public/vendors/jqvmap/dist/maps/jquery.vmap.world.js') }}"></script>
+                <script src="{{ asset('public/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js') }}"></script>
+                <script src="{{ asset('public/vendors/moment/min/moment.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+                <script src="{{ asset('public/vendors/fullcalendar/dist/fullcalendar.min.js') }}"></script>
+                <script src="{{ asset('public/gentelella/build/js/custom.js') }}"></script>
+                <script src="{{ asset('public/vendors/raphael/raphael.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/morris.js/morris.min.js') }}"></script>
+                <script src="{{ asset('public/vendors/echarts/dist/echarts.js') }}"></script>
+                <script src="https://unpkg.com/ag-grid-community/dist/ag-grid-community.min.noStyle.js"></script>
+                <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+                <script src="https://cdn.ckeditor.com/ckeditor5/11.1.0/classic/translations/es.js"></script>
+                <script type="text/javascript" src="{{ asset('public/js/bootstrap-datepicker.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('public//vendors/switchery/dist/switchery.min.js') }}"></script>
+                <script type="text/javascript" src="{{ asset('public/js/bootbox.min.js') }}"></script>
+                <script src="{{ asset('public/js/fileinput.js') }}"></script>
+                <script src="{{ asset('public/js/app.js') }}"></script>
+
+            {% endblock %}
+        {%endif%}
+    </body>

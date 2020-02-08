@@ -1,0 +1,231 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_compra_index')}}">Compras</a> » <strong>Editar compra</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Editar compra</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fas fa-edit" aria-hidden="true"></i> <strong>Editar</strong></div>
+            <div class="panel-body">
+                <form action="{{path('briooz_compra_update')}}" method="POST" id="form">
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-xs-12 col-md-6">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>(*) Lote <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Lote" name="lote" id="lote" class="form-control" value="{{compra.lote}}"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_lote"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Proveedor <i class="fas fa-sort-down"></i></label>
+                                    <select class="form-control" id="proveedor" name="proveedor">
+                                        <option value="0">[ Seleccione el proveedor ]</option>
+                                        {%for proveedor in proveedores%}
+                                            <option value="{{proveedor.id}}" {%if compra.proveedor.id==proveedor.id%}selected{%endif%}>{{proveedor.empresa}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_proveedor"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Total de Items <i class="fas fa-sort-down"></i></label>
+                                    <input type="number" placeholder="Total de items" name="items" id="items" class="form-control" value="{{compra.items}}"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_items"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div> 
+                                <div class="form-group">
+                                    <label>(*) Subtotal <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Subtotal de la compra" name="subtotal" id="subtotal" class="form-control" value="{{compra.subtotal}}"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_subtotal"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div> 
+                                <div class="form-group">
+                                    <label>(*) IVA <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="IVA de la compra" name="iva" id="iva" class="form-control" value="{{compra.iva}}" readonly="true"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_iva"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>(*) Total <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Costo Total de la compra" name="total" id="total" class="form-control" value="{{compra.total}}"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_total"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                            </fieltset>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label>(*) Factura <i class="fas fa-sort-down"></i></label>
+                                <input type="text" placeholder="Número de factura" name="factura" id="factura" class="form-control" value="{{compra.factura}}"/>
+                                <div class="text-danger msj-error-form hidden" id="error_factura"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                            </div>
+                            <div class="form-group">
+                                <label>(*) Fecha <i class="fas fa-sort-down"></i></label>
+                                <div style="position: relative;">
+                                    <div class="input-group date">
+                                        <input type="text" class="form-control" value="{{compra.fecha|date('Y-m-d')}}" name="fecha" id="fecha"><span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                    </div>
+                                    <div class="contenedor-check hidden" id="check_fecha" style="right: 50px;"><i class="fas fa-check"></i></div>
+                                </div>
+                                <div class="campo_error hidden" id="error_fecha"><i class="fas fa-exclamation-triangle"></i> Campo Fecha requerido</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="hidden" name="id" id="id" value="{{compra.id}}">
+                        <a href="#" id="boton-enviar"  class="btn btn-success"><i class="fas fa-save"></i> Guardar</a>
+                        <a href="#" id="boton-cancelar"  class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                    </div>
+                    <div class="row" style="margin-bottom: 7px;">
+                        <div class="col-xs-12" style="text-align:left;">
+                            <span class="text-danger"><strong>(*) campo obligatorio</strong></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+        $(function () {
+
+            $('.input-group.date').datepicker({
+                format: "yyyy-mm-dd",
+                todayBtn: "linked",
+                weekStart: 1,
+                language: "es",
+                multidate: false,
+                daysOfWeekDisabled: "",
+                daysOfWeekHighlighted: "",
+                autoclose: true,
+                todayHighlight: true,
+                toggleActive: true
+            });
+
+
+            $('#boton-cancelar').click(function (e) {
+                e.preventDefault();
+                $('#form')[0].reset();
+            });
+            
+            $('#subtotal').keyup(function () {
+
+                var subtotal = parseFloat($('#subtotal').val());
+                if (subtotal != "") {
+                    var iva = parseFloat(subtotal * 0.12);
+                    $('#iva').val(iva);
+                    var total = parseFloat(subtotal + iva);
+                    $('#total').val(total);
+                }
+            });
+
+            $('#boton-enviar').click(function (e) {
+                e.preventDefault();
+                var enviar = true;
+                var lote = $('#lote');
+                var proveedor = $('#proveedor');
+                var items = $('#items');
+                var subtotal = $('#subtotal');
+                var iva = $('#iva');
+                var total = $('#total');
+                var factura = $('#factura');
+                var fecha = $('#fecha');
+                var error_lote = $('#error_lote');
+                var error_proveedor = $('#error_proveedor');
+                var error_items = $('#error_items');
+                var error_subtotal = $('#error_subtotal');
+                var error_iva = $('#error_iva');
+                var error_total = $('#error_total');
+                var error_factura = $('#error_factura');
+                var error_fecha = $('#error_fecha');
+                if (lote.val() == "") {
+                    enviar = false;
+                    error_lote.removeClass('hidden');
+                    lote.css('border-color', '#a94442');
+                } else {
+                    error_lote.addClass('hidden');
+                    lote.css('border-color', '#ccc');
+                }
+
+                if (proveedor.val() == 0) {
+                    enviar = false;
+                    error_proveedor.removeClass('hidden');
+                    proveedor.css('border-color', '#a94442');
+                } else {
+                    error_proveedor.addClass('hidden');
+                    proveedor.css('border-color', '#ccc');
+                }
+
+                if (items.val() == "") {
+                    enviar = false;
+                    error_items.removeClass('hidden');
+                    items.css('border-color', '#a94442');
+                } else {
+                    error_items.addClass('hidden');
+                    items.css('border-color', '#ccc');
+                }
+
+                if (subtotal.val() == "") {
+                    enviar = false;
+                    error_subtotal.removeClass('hidden');
+                    subtotal.css('border-color', '#a94442');
+                } else {
+                    error_subtotal.addClass('hidden');
+                    subtotal.css('border-color', '#ccc');
+                }
+
+                if (iva.val() == "") {
+                    enviar = false;
+                    error_iva.removeClass('hidden');
+                    iva.css('border-color', '#a94442');
+                } else {
+                    error_iva.addClass('hidden');
+                    iva.css('border-color', '#ccc');
+                }
+
+                if (subtotal.val() == "") {
+                    enviar = false;
+                    error_subtotal.removeClass('hidden');
+                    subtotal.css('border-color', '#a94442');
+                } else {
+                    error_subtotal.addClass('hidden');
+                    subtotal.css('border-color', '#ccc');
+                }
+
+                if (total.val() == "") {
+                    enviar = false;
+                    error_total.removeClass('hidden');
+                    total.css('border-color', '#a94442');
+                } else {
+                    error_total.addClass('hidden');
+                    total.css('border-color', '#ccc');
+                }
+
+                if (factura.val() == "") {
+                    enviar = false;
+                    error_factura.removeClass('hidden');
+                    factura.css('border-color', '#a94442');
+                } else {
+                    error_factura.addClass('hidden');
+                    factura.css('border-color', '#ccc');
+                }
+
+                if (fecha.val() == "") {
+                    enviar = false;
+                    error_fecha.removeClass('hidden');
+                    fecha.css('border-color', '#a94442');
+                } else {
+                    error_fecha.addClass('hidden');
+                    fecha.css('border-color', '#ccc');
+                }
+
+                if (enviar == true) {
+                    $('#form').submit();
+                }
+            });
+            
+        
+        });
+    </script>
+{% endblock %}
+

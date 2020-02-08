@@ -1,0 +1,34 @@
+briooz_color_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Colores:index }
+    
+briooz_color_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Colores:delete}
+    methods: [POST,DELETE]
+    
+briooz_color_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Colores:add }
+    
+briooz_color_creado:
+    path:     /colorCreado
+    defaults: { _controller: BrioozTaskBundle:Colores:creado}
+    methods: POST
+    
+briooz_color_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Colores:edit, id: null }
+    
+briooz_color_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Colores:update }
+    methods: [POST, PUT]
+    
+briooz_color_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Colores:edit
+        path: /colores/edit/{id}
+        permanent: true
+

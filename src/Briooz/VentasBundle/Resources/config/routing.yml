@@ -1,0 +1,11 @@
+briooz_ventas_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BrioozVentasBundle:Default:index }
+    
+briooz_ventas:
+    resource: "@BrioozVentasBundle/Resources/config/routes/venta.yml"
+    prefix: /ventas
+    
+briooz_compras:
+    resource: "@BrioozVentasBundle/Resources/config/routes/compra.yml"
+    prefix: /compras

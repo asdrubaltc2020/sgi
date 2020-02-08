@@ -1,0 +1,7 @@
+briooz_admin_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BrioozAdminBundle:Default:index }
+    
+briooz_admin_installer:
+    path:     /install
+    defaults: { _controller: BrioozAdminBundle:Installer:index }

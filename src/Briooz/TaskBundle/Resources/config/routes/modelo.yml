@@ -1,0 +1,34 @@
+briooz_modelo_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Modelos:index }
+    
+briooz_modelo_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Modelos:delete}
+    methods: [POST,DELETE]
+    
+briooz_modelo_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Modelos:add }
+    
+briooz_modelo_creado:
+    path:     /modeloCreado
+    defaults: { _controller: BrioozTaskBundle:Modelos:creado}
+    methods: POST
+    
+briooz_modelo_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Modelos:edit,id: null }
+    
+briooz_modelo_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Modelos:update }
+    methods: [POST, PUT]
+    
+briooz_modelo_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Modelos:edit
+        path: /modeloes/edit/{id}
+        permanent: true
+

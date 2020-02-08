@@ -1,0 +1,34 @@
+briooz_talla_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Tallas:index }
+    
+briooz_talla_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Tallas:delete}
+    methods: [POST,DELETE]
+    
+briooz_talla_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Tallas:add }
+    
+briooz_talla_creado:
+    path:     /tallaCreado
+    defaults: { _controller: BrioozTaskBundle:Tallas:creado}
+    methods: POST
+    
+briooz_talla_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Tallas:edit, id: null }
+    
+briooz_talla_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Tallas:update }
+    methods: [POST, PUT]
+    
+briooz_talla_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Tallas:edit
+        path: /tallaes/edit/{id}
+        permanent: true
+

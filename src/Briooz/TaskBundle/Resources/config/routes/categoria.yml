@@ -1,0 +1,35 @@
+briooz_categoria_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Categorias:index }
+    
+briooz_categoria_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Categorias:delete}
+    methods: [POST,DELETE]
+    
+briooz_categoria_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Categorias:add }
+    
+briooz_categoria_creado:
+    path:     /categoriaCreado
+    defaults: { _controller: BrioozTaskBundle:Categorias:creado}
+    methods: POST
+    
+briooz_categoria_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Categorias:edit, id: null }
+    
+briooz_categoria_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Categorias:update }
+    methods: [POST, PUT]
+    
+briooz_categoria_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Categorias:edit
+        path: /categorias/edit/{id}
+        permanent: true
+
+

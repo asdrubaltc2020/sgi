@@ -1,0 +1,3 @@
+briooz_email_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: BrioozEmailBundle:Default:index }

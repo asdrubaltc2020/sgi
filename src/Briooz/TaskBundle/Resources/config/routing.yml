@@ -1,0 +1,52 @@
+briooz_color:
+    resource: "@BrioozTaskBundle/Resources/config/routes/color.yml"
+    prefix: /colores
+    
+briooz_modelo:
+    resource: "@BrioozTaskBundle/Resources/config/routes/modelo.yml"
+    prefix: /modelos
+    
+briooz_taco:
+    resource: "@BrioozTaskBundle/Resources/config/routes/taco.yml"
+    prefix: /tacos
+    
+briooz_bodega:
+    resource: "@BrioozTaskBundle/Resources/config/routes/bodega.yml"
+    prefix: /bodegas
+    
+briooz_categoria:
+    resource: "@BrioozTaskBundle/Resources/config/routes/categoria.yml"
+    prefix: /categorias
+    
+briooz_categoria_deducible:
+    resource: "@BrioozTaskBundle/Resources/config/routes/deducible.yml"
+    prefix: /categorias_deducibles
+    
+briooz_talla:
+    resource: "@BrioozTaskBundle/Resources/config/routes/talla.yml"
+    prefix: /tallas
+    
+briooz_proveedor:
+    resource: "@BrioozTaskBundle/Resources/config/routes/proveedor.yml"
+    prefix: /proveedores
+    
+briooz_task_usuario:
+    resource: "@BrioozTaskBundle/Resources/config/routes/usuario.yml"
+    prefix: /usuario   
+    
+briooz_task_login:
+    resource: "@BrioozTaskBundle/Resources/config/routes/login.yml"
+    prefix: /  
+    
+briooz_cliente:
+    resource: "@BrioozTaskBundle/Resources/config/routes/cliente.yml"
+    prefix: /clientes
+    
+briooz_task_producto:
+    resource: "@BrioozTaskBundle/Resources/config/routes/zapato.yml"
+    prefix: /productos
+    
+briooz_forma_pago:
+    resource: "@BrioozTaskBundle/Resources/config/routes/formapago.yml"
+    prefix: /formaspago
+    

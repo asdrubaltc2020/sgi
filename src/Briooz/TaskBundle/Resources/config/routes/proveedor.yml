@@ -1,0 +1,34 @@
+briooz_proveedor_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Proveedores:index }
+    
+briooz_proveedor_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Proveedores:delete}
+    methods: [POST,DELETE]
+    
+briooz_proveedor_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Proveedores:add }
+    
+briooz_proveedor_creado:
+    path:     /proveedorCreado
+    defaults: { _controller: BrioozTaskBundle:Proveedores:creado}
+    methods: POST
+    
+briooz_proveedor_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Proveedores:edit, id: null }
+    
+briooz_proveedor_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Proveedores:update }
+    methods: [POST, PUT]
+    
+briooz_proveedor_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Proveedores:edit
+        path: /proveedores/edit/{id}
+        permanent: true
+

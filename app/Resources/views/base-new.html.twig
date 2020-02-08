@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <title>BsnNet LLC | Behavioral Services  Network!</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{{ asset('public/global_assets/css/icons/icomoon/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/global_assets/css/icons/fontawesome/styles.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/bootstrap_limitless.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/layout.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/components.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/assets/css/colors.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('public/css/custom.css') }}">
+    {% endblock %}
+</head>
+<body>
+<!-- Main navbar -->
+<div class="navbar navbar-expand-md navbar-light fixed-top">
+    <!-- Header with logos -->
+    <div class="navbar-header navbar-dark d-none d-md-flex align-items-md-center">
+        <div class="navbar-brand navbar-brand-md">
+            <a href="index.html" class="d-inline-block">
+                <img src="{{ asset('public/global_assets/images/logo2.png') }}" alt="">
+            </a>
+        </div>
+        <div class="navbar-brand navbar-brand-xs">
+            <a href="index.html" class="d-inline-block">
+                <img src="{{ asset('public/global_assets/images/logo2.png') }}" alt="">
+            </a>
+        </div>
+    </div>
+    <!-- /header with logos -->
+    <!-- Mobile controls -->
+    <div class="d-flex flex-1 d-md-none">
+        <div class="navbar-brand mr-auto">
+            <a href="index.html" class="d-inline-block">
+                <img src="{{ asset('public/global_assets/images/logo1.png') }}" alt="">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-mobile">
+            <i class="icon-tree5"></i>
+        </button>
+        <button class="navbar-toggler sidebar-mobile-main-toggle" type="button">
+            <i class="icon-paragraph-justify3"></i>
+        </button>
+    </div>
+    <!-- /mobile controls -->
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbar-mobile">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link sidebar-control sidebar-main-toggle d-none d-md-block">
+                    <i class="icon-paragraph-justify3"></i>
+                </a>
+            </li>
+        </ul>
+        <span class="badge bg-green-400 badge-green ml-md-3 mr-md-auto">online</span>
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown dropdown-user">
+                <a href="#" class="navbar-nav-link d-flex align-items-center dropdown-toggle" data-toggle="dropdown">
+                        <span class="btn bg-transparent border-slate-700 text-slate-600 rounded-round border-2 btn-icon mr-3">
+                            <i class="fas fa-user"></i>
+                        </span>
+
+
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="" class="dropdown-item"><i class="icon-user-plus"></i> My profile</a>
+                    <a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-indigo-400 ml-auto">0</span></a>
+                    <a href="/" class="dropdown-item"><i class="icon-switch2"></i> Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <!-- /navbar content -->
+</div>
+<!-- /main navbar -->
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main sidebar -->
+    <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md sidebar-fixed">
+
+        <!-- Sidebar mobile toggler -->
+        <div class="sidebar-mobile-toggler text-center">
+            <a href="#" class="sidebar-mobile-main-toggle">
+                <i class="icon-arrow-left8"></i>
+            </a>
+            Navigation
+            <a href="#" class="sidebar-mobile-expand">
+                <i class="icon-screen-full"></i>
+                <i class="icon-screen-normal"></i>
+            </a>
+        </div>
+        <!-- /sidebar mobile toggler -->
+        <!-- Sidebar content -->
+        <div class="sidebar-content">
+            <!-- User menu -->
+            <div class="sidebar-user">
+                <div class="card-body">
+                    <div class="media">
+                        <div class="mr-3">
+                            <a class="btn bg-transparent border-white text-white rounded-round border-2 btn-icon">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </div>
+                        <div class="media-body mt-2">
+                            {% if app.user %}
+                                <div class="media-title font-weight-semibold"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /user menu -->
+            <!-- Main navigation -->
+            <div class="card card-sidebar-mobile">
+                <ul class="nav nav-sidebar" data-nav-type="accordion">
+                    <!-- Main -->
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="link-menu-dashboard">
+                            <i class="icon-home4"></i>
+                            <span>
+									Dashboard
+								</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" id="link-menu-organizations">
+                            <i class="fas fa-hospital-alt"></i>
+                            <span>
+									Organizations
+								</span>
+                        </a>
+                    </li>
+                    <li class="nav-item nav-item-submenu" id="link-group-security">
+                        <a href="#" class="nav-link"><i class="fas fa-user-shield"></i> <span>Security</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Security">
+                            <li class="nav-item nav-item-submenu" id="link-group-users">
+                                <a href="#" class="nav-link"><i class="fas fa-user-friends"></i> Users</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="" class="nav-link" id="link-admin-user">- Admin Users</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link" id="link-admin-payeruser">- Payer Users</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link" id="link-admin-provideruser">- Provider Users</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link"><i class="fas fa-cogs"></i> <span>Configuration</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Security">
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="fas fa-hospital-alt"></i> Organization</a>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"> <i class="fas fa-user-md"></i> Providers</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="" class="nav-link">- Payers</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link">- Termination Reason</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link">- Santion Reason</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link">- Credentialing Status</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="#" class="nav-link"><i class="fas fa-map-marker-alt"></i> Locations</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="" class="nav-link">- Service Serttings</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link">- Contact Title</a></li>
+                                    <li class="nav-item"><a href="" class="nav-link">- Facility Type</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item nav-item-submenu" id="link-group-report">
+                        <a href="#" class="nav-link"><i class="fas fa-user-shield"></i> <span>Provider Portal</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Security">
+                            <li class="nav-item"><a href="" class="nav-link" id="link-menu-agproviders">Organizations</a></li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="" class="nav-link">Configurations</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="" class="nav-link">- Organization Status</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item nav-item-submenu" id="link-group-report">
+                        <a href="#" class="nav-link"><i class="fas fa-user-shield"></i> <span>Reports</span></a>
+                        <ul class="nav nav-group-sub" data-submenu-title="Security">
+                            <li class="nav-item"><a href="" class="nav-link" id="link-menu-agproviders">Providers Report</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Organizations Report</a></li>
+                            <li class="nav-item"><a href="" class="nav-link">Billing Address Report</a></li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="" class="nav-link">Payer Report</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="#" class="nav-link">- MMM Provider report</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-item-submenu">
+                                <a href="" class="nav-link">Company Status</a>
+                                <ul class="nav nav-group-sub">
+                                    <li class="nav-item"><a href="" class="nav-link">- Providers Status</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>
+                                Exit
+							</span>
+                        </a>
+                    </li>
+
+                    <!-- /main -->
+                </ul>
+            </div>
+            <!-- /main navigation -->
+
+        </div>
+        <!-- /sidebar content -->
+    </div>
+    <!-- /main sidebar -->
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <!-- Content area -->
+        <div class="content pt-0 mt-5" style="padding: 0;">
+            <!-- Dashboard content -->
+            <div class="row" style="margin-right: 0;margin-left: 0;">
+                <div class="col-xl-12" style="padding-left: 0;padding-right: 0;">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
+            <!-- /dashboard content -->
+        </div>
+        <!-- /content area -->
+        <!-- Footer -->
+        <div class="navbar navbar-expand-lg navbar-light" style="z-index: 200">
+            <div class="text-center d-lg-none w-100">
+                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                    <i class="icon-unfold mr-2"></i>
+                    Footer
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-footer">
+					<span class="navbar-text">
+						&copy; {{ "now"|date("Y") }}  BEHAVIORAL SERVICES NETWORK LLC
+					</span>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /main content -->
+</div>
+<!-- /page content -->
+
+{% block javascripts %}
+    <!-- Core JS files -->
+    <script src="{{ asset('public/global_assets/js/main/jquery.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/main/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/loaders/blockui.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/visualization/d3/d3.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/visualization/d3/d3_tooltip.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/styling/switchery.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/selects/bootstrap_multiselect.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/ui/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+    <script src="{{ asset('public/assets/js/app.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/styling/switch.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/demo_pages/form_checkboxes_radios.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/extensions/jquery_ui/interactions.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/notifications/bootbox.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/loaders/progressbar.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/notifications/pnotify.min.js') }}"></script>
+
+    <script src="{{ asset('public/global_assets/js/plugins/forms/wizards/steps.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/inputmask.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/validation/validate.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/extensions/cookie.js') }}"></script>
+
+    <script src="{{ asset('public/global_assets/js/plugins/ui/perfect_scrollbar.min.js') }}"></script>
+    <script src="{{ asset('public/js/layout_fixed_sidebar_custom.js') }}"></script>
+
+    <script src="{{ asset('public/global_assets/js/plugins/uploaders/fileinput/plugins/purify.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/uploaders/fileinput/plugins/sortable.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/uploaders/fileinput/fileinput.min.js') }}"></script>
+
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/autosize.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/formatter.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/typeahead/typeahead.bundle.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/typeahead/handlebars.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/passy.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/maxlength.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/daterangepicker.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/anytime.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/pickadate/picker.time.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/pickers/pickadate/legacy.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/notifications/jgrowl.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/touchspin.min.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/forms/inputs/passy.js') }}"></script>
+    <script src="{{ asset('public/global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+
+{% endblock %}
+</body>
+</html>

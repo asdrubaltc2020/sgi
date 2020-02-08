@@ -1,0 +1,92 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_zapato_index',{'cat':producto.categoria.id})}}">Productos</a> » <strong>Detalles Producto</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Detalles Producto</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus-circle" aria-hidden="true"></i> <strong>Detalles</strong></div>
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 5px;height:40px;">
+                    <form action="{{path('briooz_zapato_creado')}}" method="POST" id="form">
+                        <div class="col-xs-12 col-md-6">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>Código Interno:</label> {{producto.codigointerno}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoria:</label> {{producto.categoria.descripcion}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Modelo:</label> {{producto.modelo.descripcion}}</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Color :</label> {{producto.color.descripcion}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Taco :</label> {{producto.Taco.descripcion}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Proveedor :</label> {{producto.proveedor.nombres}} {{producto.proveedor.apellidos}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Código proveedor :</label> {{producto.codigoproveedor}}
+                                </div>
+                                <div class="form-group">
+                                    <label>Bodega :</label> {{producto.bodega.descripcion}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Fila  :</label> {{producto.fila}}
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Precio  :</label> {{producto.precio}} USD
+
+                                </div>
+                                <div class="form-group">
+                                    <label>PVP  :</label> {{producto.pvp}} USD
+
+                                </div>
+                            </fieltset>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Tallas  :</label>
+                                {% set per=0%}
+                                {% set cantidad=0 %}
+                                {% for talla in tallas %}
+                                    {% for tp in tallaspro%}
+                                        {%if tp.talla.id==talla.id%}
+                                            {% set per=1%}
+                                            {% set cantidad=tp.cantidad %}
+                                        {%endif%}
+                                    {%endfor%}
+                                    <div>
+                                        <label>
+                                            <span class="numero_tallas">{{talla.descripcion}}</span> <input type="checkbox" class="js-switch tallaCheck small" disabled="true" {%if per==1%}checked{%endif%}/> 
+                                            {%if per==1%}
+                                                <input type="number" value="{{cantidad}}"  class="form-control" style="width: 75px;display: inline-block;margin-left: 10px;" readonly="true"/>
+                                            {%endif%}
+                                        </label>
+                                    </div>
+                                    {% set per=0%}{% set cantidad=0 %}
+                                {%endfor%}
+                            </div>
+                            <div class="form-group">
+                                <label>Detalles  :</label>
+                                <p>{{producto.detalle}}</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+{% endblock %}

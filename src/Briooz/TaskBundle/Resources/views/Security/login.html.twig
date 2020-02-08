@@ -1,0 +1,55 @@
+
+{% extends 'layout-home.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/signin.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form action="{{ path('briooz_usuario_login_check') }}" method="post" class="form-signin">
+                        <input type="hidden" name="_target_path" value="briooz_usuario_homepage" />
+                        <h1 style="color:#fff;">Ingresar</h1>
+                        <div>
+                            <input type="text" id="usuario" class="form-control" name="_usuario" value="{{ last_username }}" placeholder="Usuario" required/> 
+                        </div>
+                        <div>
+                            <input type="password" id="password" class="form-control" name="_password" placeholder="Contraseña" required />
+                        </div>
+                        <div>
+                            {%if error%}
+                                {% if error.messageKey=="Invalid credentials." %}
+                                    <p style="color:red">Usuario o contraseña incorrectas</p>
+                                {%endif%}
+                            {%endif%}
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:25px;">Entrar</button>
+                            <a class="reset_pass" href="{{path('briooz_usuario_password')}}" style="margin-top:32px!important;color:#fff;">Perdio su contraseña?</a>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1> <span style="font-weight: 500;color:#fff;">SGI</span></h1>
+                                <p style="color:#fff;">Briooz Data Service©{{ "now"|date("Y") }} Todos los derechos reservados.<br/> Sistema de gestión de Inventarios. </p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+
+        </div>
+    </div>  
+{% endblock %}

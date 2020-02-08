@@ -1,0 +1,1031 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="titulo-container">
+        <h3>Dashboard</h3>
+    </section>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Ventas</h3>
+        </div>
+        <div class="panel-body">
+            <section>                
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="row tile_count">
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fas fa-dollar-sign"></i> Hoy</span>
+                                <div class="count">{{ventas['hoy']}}</div>
+                                <span class="count_bottom"><i class="green">0% </i> vs último día</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fas fa-dollar-sign"></i> Semana</span>
+                                <div class="count">{{ventas['semana']}}</div>
+                                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> vs última semana</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fas fa-dollar-sign"></i> Mes</span>
+                                <div class="count">{{ventas['mes']}}</div>
+                                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>0% </i> vs último mes</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fas fa-dollar-sign"></i> Año</span>
+                                <div class="count">{{ventas['year']}}</div>
+                                <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>0% </i> vs último año</span>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fas fa-dollar-sign"></i> Total</span>
+                                <div class="count">{{ventas['total']}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="x_panel tile fixed_height_370">
+                            <div class="x_title">
+                                <h2>Ventas año</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="echart_bar_horizontal1" style="height:370px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="x_panel tile fixed_height_370">
+                            <div class="x_title">
+                                <h2>Ventas mes</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="ventasmes" style="height:370px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="x_panel tile fixed_height_370">
+                            <div class="x_title">
+                                <h2>Ventas semana</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="ventassemana" style="height:370px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Productos en inventario</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row tile_count">
+                        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                            <span class="count_top">Hombre</span>
+                            <div class="count">{{ totalProductosHombre }}</div>
+                            <span class="count_bottom"><i class="green">0% </i> del total</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                            <span class="count_top">Mujer</span>
+                            <div class="count">{{ totalProductosMujer }}</div>
+                            <span class="count_bottom"><i class="green">0% </i> del total</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                            <span class="count_top">Niños</span>
+                            <div class="count">{{ totalProductosKids }}</div>
+                            <span class="count_bottom"><i class="green">0% </i> del total</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                            <span class="count_top">Accesorios</span>
+                            <div class="count">{{ totalProductosAccesorios }}</div>
+                            <span class="count_bottom"><i class="green">0% </i> del total</span>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                            <span class="count_top">Total</span>
+                            <div class="count">{{ productoCantidades['total'][0] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Ventas vs Compras</h3>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="ventasvscompras" style="height:350px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Compras</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="x_panel tile fixed_height_360">
+                            <div class="x_title">
+                                <h2>Compras año</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <canvas id="comprasYear" width="280" height="220" style="height: 220px!important;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="x_panel tile fixed_height_340">
+                            <div class="x_title">
+                                <h2>Compras por provedor (Total)</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="comprasproveedor" style="height:305px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="x_panel tile fixed_height_340">
+                            <div class="x_title">
+                                <h2>Compras por provedor (Monto en USD)</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div id="comprasproveedorusd" style="height:305px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script language="JavaScript" type="text/javascript">
+
+        var theme = {
+        color: [
+                '#26B99A', '#34495E', '#BDC3C7', '#3498DB',
+                '#9B59B6', '#8abb6f', '#759c6a', '#bfd3b7'
+        ],
+                title: {
+                itemGap: 8,
+                        textStyle: {
+                        fontWeight: 'normal',
+                                color: '#408829'
+                        }
+                },
+                dataRange: {
+                color: ['#1f610a', '#97b58d']
+                },
+                toolbox: {
+                color: ['#408829', '#408829', '#408829', '#408829']
+                },
+                tooltip: {
+                backgroundColor: 'rgba(0,0,0,0.5)',
+                        axisPointer: {
+                        type: 'line',
+                                lineStyle: {
+                                color: '#408829',
+                                        type: 'dashed'
+                                },
+                                crossStyle: {
+                                color: '#408829'
+                                },
+                                shadowStyle: {
+                                color: 'rgba(200,200,200,0.3)'
+                                }
+                        }
+                },
+                dataZoom: {
+                dataBackgroundColor: '#eee',
+                        fillerColor: 'rgba(64,136,41,0.2)',
+                        handleColor: '#408829'
+                },
+                grid: {
+                borderWidth: 0
+                },
+                categoryAxis: {
+                axisLine: {
+                lineStyle: {
+                color: '#408829'
+                }
+                },
+                        splitLine: {
+                        lineStyle: {
+                        color: ['#eee']
+                        }
+                        }
+                },
+                valueAxis: {
+                axisLine: {
+                lineStyle: {
+                color: '#408829'
+                }
+                },
+                        splitArea: {
+                        show: true,
+                                areaStyle: {
+                                color: ['rgba(250,250,250,0.1)', 'rgba(200,200,200,0.1)']
+                                }
+                        },
+                        splitLine: {
+                        lineStyle: {
+                        color: ['#eee']
+                        }
+                        }
+                },
+                timeline: {
+                lineStyle: {
+                color: '#408829'
+                },
+                        controlStyle: {
+                        normal: {color: '#408829'},
+                                emphasis: {color: '#408829'}
+                        }
+                },
+                k: {
+                itemStyle: {
+                normal: {
+                color: '#68a54a',
+                        color0: '#a9cba2',
+                        lineStyle: {
+                        width: 1,
+                                color: '#408829',
+                                color0: '#86b379'
+                        }
+                }
+                }
+                },
+                map: {
+                itemStyle: {
+                normal: {
+                areaStyle: {
+                color: '#ddd'
+                },
+                        label: {
+                        textStyle: {
+                        color: '#c12e34'
+                        }
+                        }
+                },
+                        emphasis: {
+                        areaStyle: {
+                        color: '#99d2dd'
+                        },
+                                label: {
+                                textStyle: {
+                                color: '#c12e34'
+                                }
+                                }
+                        }
+                }
+                },
+                force: {
+                itemStyle: {
+                normal: {
+                linkStyle: {
+                strokeColor: '#408829'
+                }
+                }
+                }
+                },
+                chord: {
+                padding: 4,
+                        itemStyle: {
+                        normal: {
+                        lineStyle: {
+                        width: 1,
+                                color: 'rgba(128, 128, 128, 0.5)'
+                        },
+                                chordStyle: {
+                                lineStyle: {
+                                width: 1,
+                                        color: 'rgba(128, 128, 128, 0.5)'
+                                }
+                                }
+                        },
+                                emphasis: {
+                                lineStyle: {
+                                width: 1,
+                                        color: 'rgba(128, 128, 128, 0.5)'
+                                },
+                                        chordStyle: {
+                                        lineStyle: {
+                                        width: 1,
+                                                color: 'rgba(128, 128, 128, 0.5)'
+                                        }
+                                        }
+                                }
+                        }
+                },
+                gauge: {
+                startAngle: 225,
+                        endAngle: - 45,
+                        axisLine: {
+                        show: true,
+                                lineStyle: {
+                                color: [[0.2, '#86b379'], [0.8, '#68a54a'], [1, '#408829']],
+                                        width: 8
+                                }
+                        },
+                        axisTick: {
+                        splitNumber: 10,
+                                length: 12,
+                                lineStyle: {
+                                color: 'auto'
+                                }
+                        },
+                        axisLabel: {
+                        textStyle: {
+                        color: 'auto'
+                        }
+                        },
+                        splitLine: {
+                        length: 18,
+                                lineStyle: {
+                                color: 'auto'
+                                }
+                        },
+                        pointer: {
+                        length: '90%',
+                                color: 'auto'
+                        },
+                        title: {
+                        textStyle: {
+                        color: '#333'
+                        }
+                        },
+                        detail: {
+                        textStyle: {
+                        color: 'auto'
+                        }
+                        }
+                },
+                textStyle: {
+                fontFamily: 'Arial, Verdana, sans-serif'
+                }
+        };
+        var ctx3 = document.getElementById("comprasYear");
+        //compras del año, por meses
+        var myChart = new Chart(ctx3, {
+        type: 'bar',
+                data: {
+                labels: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Agos", "Sept", "Oct", "Nov", "Dic"],
+                        datasets: [{
+                        label: 'Compras(USD)',
+                                data: [{{cantidadCompraMeses[0]}}, {{cantidadCompraMeses[1]}}, {{cantidadCompraMeses[2]}}, {{cantidadCompraMeses[3]}},
+        {{cantidadCompraMeses[4]}}, {{cantidadCompraMeses[5]}}, {{cantidadCompraMeses[6]}}, {{cantidadCompraMeses[7]}}, {{cantidadCompraMeses[8]}},
+        {{cantidadCompraMeses[9]}}, {{cantidadCompraMeses[10]}}, {{cantidadCompraMeses[11]}}],
+                                    backgroundColor: [
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)',
+                                            'rgba(190, 30, 195, 0.7)'
+                                    ],
+                                    borderColor: [
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                            'rgba(190, 30, 195,1)',
+                                    ],
+                                    borderWidth: 1
+                            }]
+                    },
+                    options: {
+                    scales: {
+                    yAxes: [{
+                    ticks: {
+                    beginAtZero: true
+                    }
+                    }]
+                    }
+                    }
+            });
+            if ($('#power_gauge').length) {
+
+            var powerGauge = echarts.init(document.getElementById('power_gauge'), theme);
+            powerGauge.setOption({
+            tooltip: {
+            formatter: "{a} <br/>{b} : {c}%"
+            },
+                    toolbox: {
+                    show: true,
+                            feature: {
+                            restore: {
+                            show: true,
+                                    title: "Restore"
+                            },
+                                    saveAsImage: {
+                                    show: true,
+                                            title: "Save Image"
+                                    }
+                            }
+                    },
+                    series: [{
+                    name: 'Performance',
+                            type: 'gauge',
+                            center: ['50%', '50%'],
+                            startAngle: 140,
+                            endAngle: - 140,
+                            min: 0,
+                            max: 100,
+                            precision: 0,
+                            splitNumber: 10,
+                            axisLine: {
+                            show: true,
+                                    lineStyle: {
+                                    color: [
+                                    [0.2, 'lightgreen'],
+                                    [0.4, 'orange'],
+                                    [0.8, 'skyblue'],
+                                    [1, '#ff4500']
+                                    ],
+                                            width: 30
+                                    }
+                            },
+                            axisTick: {
+                            show: true,
+                                    splitNumber: 5,
+                                    length: 8,
+                                    lineStyle: {
+                                    color: '#eee',
+                                            width: 1,
+                                            type: 'solid'
+                                    }
+                            },
+                            axisLabel: {
+                            show: true,
+                                    formatter: function (v) {
+                                    switch (v + '') {
+                                    case '0':
+                                            return '0%';
+                                    case '10':
+                                            return '10%';
+                                    case '20':
+                                            return '20%';
+                                    case '30':
+                                            return '30%';
+                                    case '40':
+                                            return '40%';
+                                    case '50':
+                                            return '50%';
+                                    case '60':
+                                            return '60%';
+                                    case '70':
+                                            return '70%';
+                                    case '80':
+                                            return '80%';
+                                    case '90':
+                                            return '90%';
+                                    case '100':
+                                            return '100%';
+                                    default:
+                                            return '';
+                                    }
+                                    },
+                                    textStyle: {
+                                    color: '#333'
+                                    }
+                            },
+                            splitLine: {
+                            show: true,
+                                    length: 30,
+                                    lineStyle: {
+                                    color: '#eee',
+                                            width: 2,
+                                            type: 'solid'
+                                    }
+                            },
+                            pointer: {
+                            length: '80%',
+                                    width: 8,
+                                    color: 'auto'
+                            },
+                            title: {
+                            show: true,
+                                    offsetCenter: ['-65%', - 10],
+                                    textStyle: {
+                                    color: '#333',
+                                            fontSize: 15
+                                    }
+                            },
+                            detail: {
+                            show: true,
+                                    backgroundColor: 'rgba(0,0,0,0)',
+                                    borderWidth: 0,
+                                    borderColor: '#ccc',
+                                    width: 100,
+                                    height: 40,
+                                    offsetCenter: ['-60%', 10],
+                                    formatter: '{value}%',
+                                    textStyle: {
+                                    color: 'auto',
+                                            fontSize: 30
+                                    }
+                            },
+                            data: [{
+                            value: 87,
+                                    name: 'Performance'
+                            }]
+                    }]
+            });
+            }
+
+            if ($('#ventasvscompras').length) {
+
+            var echartBar = echarts.init(document.getElementById('ventasvscompras'), theme);
+            echartBar.setOption({
+            title: {
+            text: 'Ventas vs Compras',
+                    subtext: 'Datos en USD'
+            },
+                    tooltip: {
+                    trigger: 'axis'
+                    },
+                    legend: {
+                    data: ['ventas', 'compras']
+                    },
+                    toolbox: {
+                    show: false
+                    },
+                    calculable: false,
+                    xAxis: [{
+                    type: 'category',
+                            data: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+                    }],
+                    yAxis: [{
+                    type: 'value'
+                    }],
+                    series: [{
+                    name: 'ventas',
+                            type: 'bar',
+                            data: [2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                            markPoint: {
+                            data: [{
+                            type: 'max',
+                                    name: 'Máximo'
+                            }, {
+                            type: 'min',
+                                    name: 'Mínimo'
+                            }]
+                            },
+                            markLine: {
+                            data: [{
+                            type: 'average',
+                                    name: 'Promedio'
+                            }]
+                            }
+                    }, {
+                    name: 'compras',
+                            type: 'bar',
+                            data: [{{cantidadCompraMeses[0]}}, {{cantidadCompraMeses[1]}}, {{cantidadCompraMeses[2]}}, {{cantidadCompraMeses[3]}}, {{cantidadCompraMeses[4]}},
+        {{cantidadCompraMeses[5]}}, {{cantidadCompraMeses[6]}}, {{cantidadCompraMeses[7]}}, {{cantidadCompraMeses[8]}},
+        {{cantidadCompraMeses[9]}}, {{cantidadCompraMeses[10]}},{{cantidadCompraMeses[11]}} ],
+                                                            markPoint: {
+                                                            data: [{
+                                                            name: 'máximo',
+                                                                    value:{{valoresMaximo[0]}},
+                                                                    xAxis:{{valoresMaximo[1]}},
+                                                                    yAxis:{{valoresMaximo[0]}},
+                                                            }, {
+                                                            name: 'mínimo',
+                                                                    value:{{valoresMinimo[0]}},
+                                                                    xAxis:{{valoresMinimo[1]}},
+                                                                    yAxis:{{valoresMinimo[0]}}
+                                                            }]
+                                                            },
+                                                            markLine: {
+                                                            data: [{
+                                                            type: 'average',
+                                                                    name: 'Promedio'
+                                                            }]
+                                                            }
+                                                    }]
+                                            });
+                                            }
+
+                                            var a = $('#ventasmes');
+                                            //echart Pie
+
+                                            if ($('#ventasmes').length) {
+
+                                            var echartPie = echarts.init(document.getElementById('ventasmes'), theme);
+                                            echartPie.setOption({
+                                            tooltip: {
+                                            trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                            },
+                                                    legend: {
+                                                    x: 'center',
+                                                            y: 'bottom',
+                                                            data: ['Semana 1', 'Semana 2', 'Semana 3', 'Semana 4', 'Semana 5', 'Semana 6']
+                                                    },
+                                                    toolbox: {
+                                                    show: true,
+                                                            feature: {
+                                                            magicType: {
+                                                            show: true,
+                                                                    type: ['pie', 'funnel'],
+                                                                    option: {
+                                                                    funnel: {
+                                                                    x: '25%',
+                                                                            width: '50%',
+                                                                            funnelAlign: 'left',
+                                                                            max: 1548
+                                                                    }
+                                                                    }
+                                                            },
+                                                                    restore: {
+                                                                    show: true,
+                                                                            title: "Restore"
+                                                                    },
+                                                                    saveAsImage: {
+                                                                    show: true,
+                                                                            title: "Guardar Imagen"
+                                                                    }
+                                                            }
+                                                    },
+                                                    calculable: true,
+                                                    series: [{
+                                                    name: 'Ventas por semana',
+                                                            type: 'pie',
+                                                            radius: '55%',
+                                                            center: ['50%', '48%'],
+                                                            data: [{
+                                                            value: 335,
+                                                                    name: 'Semana 1'
+                                                            }, {
+                                                            value: 310,
+                                                                    name: 'Semana 2'
+                                                            }, {
+                                                            value: 234,
+                                                                    name: 'Semana 3'
+                                                            }, {
+                                                            value: 135,
+                                                                    name: 'Semana 4'
+                                                            }, {
+                                                            value: 1548,
+                                                                    name: 'Semana 5'
+                                                            }, {
+                                                            value: 256,
+                                                                    name: 'Semana 6'
+                                                            }
+                                                            ]
+                                                    }]
+                                            });
+                                            var dataStyle = {
+                                            normal: {
+                                            label: {
+                                            show: false
+                                            },
+                                                    labelLine: {
+                                                    show: false
+                                                    }
+                                            }
+                                            };
+                                            var placeHolderStyle = {
+                                            normal: {
+                                            color: 'rgba(0,0,0,0)',
+                                                    label: {
+                                                    show: false
+                                                    },
+                                                    labelLine: {
+                                                    show: false
+                                                    }
+                                            },
+                                                    emphasis: {
+                                                    color: 'rgba(0,0,0,0)'
+                                                    }
+                                            };
+                                            }
+
+
+                                            //echart Donut
+                                            if ($('#ventassemana').length) {
+
+                                            var echartDonut = echarts.init(document.getElementById('ventassemana'), theme);
+                                            echartDonut.setOption({
+                                            tooltip: {
+                                            trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                            },
+                                                    calculable: true,
+                                                    legend: {
+                                                    x: 'center',
+                                                            y: 'bottom',
+                                                            data: ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
+                                                    },
+                                                    toolbox: {
+                                                    show: true,
+                                                            feature: {
+                                                            magicType: {
+                                                            show: true,
+                                                                    type: ['pie', 'funnel'],
+                                                                    option: {
+                                                                    funnel: {
+                                                                    x: '25%',
+                                                                            width: '50%',
+                                                                            funnelAlign: 'center',
+                                                                            max: 1548
+                                                                    }
+                                                                    }
+                                                            },
+                                                                    restore: {
+                                                                    show: true,
+                                                                            title: "Restore"
+                                                                    },
+                                                                    saveAsImage: {
+                                                                    show: true,
+                                                                            title: "Guardar Imagen"
+                                                                    }
+                                                            }
+                                                    },
+                                                    series: [{
+                                                    name: 'Venta por días',
+                                                            type: 'pie',
+                                                            radius: ['35%', '55%'],
+                                                            itemStyle: {
+                                                            normal: {
+                                                            label: {
+                                                            show: true
+                                                            },
+                                                                    labelLine: {
+                                                                    show: true
+                                                                    }
+                                                            },
+                                                                    emphasis: {
+                                                                    label: {
+                                                                    show: true,
+                                                                            position: 'center',
+                                                                            textStyle: {
+                                                                            fontSize: '14',
+                                                                                    fontWeight: 'normal'
+                                                                            }
+                                                                    }
+                                                                    }
+                                                            },
+                                                            data: [{
+                                                            value: 1600,
+                                                                    name: 'Lunes'
+                                                            }, {
+                                                            value: 310,
+                                                                    name: 'Martes'
+                                                            }, {
+                                                            value: 234,
+                                                                    name: 'Miercoles'
+                                                            }, {
+                                                            value: 700,
+                                                                    name: 'Jueves'
+                                                            }, {
+                                                            value: 1548,
+                                                                    name: 'Viernes'
+                                                            }, {
+                                                            value: 360,
+                                                                    name: 'Sabado'
+                                                            }, {
+                                                            value: 0,
+                                                                    name: 'Domingo'
+                                                            }]
+                                                    }]
+                                            });
+                                            }
+
+                                            if ($('#echart_bar_horizontal1').length) {
+
+                                            var echartBar = echarts.init(document.getElementById('echart_bar_horizontal1'), theme);
+                                            echartBar.setOption({
+                                            title: {
+                                            text: 'Ventas del año',
+                                                    subtext: 'USD x meses'
+                                            },
+                                                    tooltip: {
+                                                    trigger: 'axis'
+                                                    },
+                                                    legend: {
+                                                    x: 150,
+                                                            data: ['2019']
+                                                    },
+                                                    toolbox: {
+                                                    show: true,
+                                                            feature: {
+                                                            saveAsImage: {
+                                                            show: true,
+                                                                    title: "Guardar imagen"
+                                                            }
+                                                            }
+                                                    },
+                                                    calculable: true,
+                                                    xAxis: [{
+                                                    type: 'value',
+                                                            boundaryGap: [0, 0.01]
+                                                    }],
+                                                    yAxis: [{
+                                                    type: 'category',
+                                                            data: ['Dic', 'Nov', 'Oct', 'Sep', 'Ago', 'Jul', 'Jun', 'May', 'Abr', 'Mar', 'Feb', 'Ene']
+                                                    }],
+                                                    series: [{
+                                                    name: '2019',
+                                                            type: 'bar',
+                                                            data: [{{ cantidadVentaMeses[11] }}, {{ cantidadVentaMeses[10] }}, {{ cantidadVentaMeses[9] }}, {{ cantidadVentaMeses[8] }}
+                                                                , {{ cantidadVentaMeses[7] }}, {{ cantidadVentaMeses[6] }}, {{ cantidadVentaMeses[5] }}, {{ cantidadVentaMeses[4] }},
+                                                                {{ cantidadVentaMeses[3] }}, {{ cantidadVentaMeses[2] }}, {{ cantidadVentaMeses[1] }}, {{ cantidadVentaMeses[0] }}]
+                                                    }]
+                                            });
+                                            }
+
+
+                                            //echart Donut
+                                            if ($('#comprasproveedor').length) {
+
+                                            var echartDonut = echarts.init(document.getElementById('comprasproveedor'), theme);
+                                            echartDonut.setOption({
+                                            tooltip: {
+                                            trigger: 'item',
+                                                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                            },
+                                                    calculable: true,
+                                                    legend: {
+                                                    x: 'center',
+                                                            y: 'bottom',
+                                                            data: [{%for cantidadPro in cantPorProveedor %}
+                                                                    '{{cantidadPro[1]}}',
+        {%endfor%}
+                            ]
+                    },
+                    toolbox: {
+                    show: true,
+                            feature: {
+                            magicType: {
+                            show: true,
+                                    type: ['pie', 'funnel'],
+                                    option: {
+                                    funnel: {
+                                    x: '25%',
+                                            width: '50%',
+                                            funnelAlign: 'center',
+                                            max: 1548
+                                    }
+                                    }
+                            },
+                                    restore: {
+                                    show: true,
+                                            title: "Restore"
+                                    },
+                                    saveAsImage: {
+                                    show: true,
+                                            title: "Guardar Imagen"
+                                    }
+                            }
+                    },
+                    series: [{
+                    name: 'Compras por proveedor',
+                            type: 'pie',
+                            radius: ['35%', '55%'],
+                            itemStyle: {
+                            normal: {
+                            label: {
+                            show: true
+                            },
+                                    labelLine: {
+                                    show: true
+                                    }
+                            },
+                                    emphasis: {
+                                    label: {
+                                    show: true,
+                                            position: 'center',
+                                            textStyle: {
+                                            fontSize: '14',
+                                                    fontWeight: 'normal'
+                                            }
+                                    }
+                                    }
+                            },
+                            data: [
+            {%for cantidadPro in cantPorProveedor %}
+                                {
+                                value:{{cantidadPro[0]}},
+                                        name: '{{cantidadPro[1]}}'
+                                },
+            {%endfor%}
+                                ]
+                        }]
+                });
+                }
+
+                //echart Donut
+                if ($('#comprasproveedorusd').length) {
+
+                var echartDonut = echarts.init(document.getElementById('comprasproveedorusd'), theme);
+                echartDonut.setOption({
+                tooltip: {
+                trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+                        calculable: true,
+                        legend: {
+                        x: 'center',
+                                y: 'bottom',
+                                data: [{%for cantidadPro in cantPorProveedor %}
+                                        '{{cantidadPro[1]}}',
+            {%endfor%}
+                                ]
+                        },
+                        toolbox: {
+                        show: true,
+                                feature: {
+                                magicType: {
+                                show: true,
+                                        type: ['pie', 'funnel'],
+                                        option: {
+                                        funnel: {
+                                        x: '25%',
+                                                width: '50%',
+                                                funnelAlign: 'center',
+                                                max: 1548
+                                        }
+                                        }
+                                },
+                                        restore: {
+                                        show: true,
+                                                title: "Reiniciar"
+                                        },
+                                        saveAsImage: {
+                                        show: true,
+                                                title: "Guardar Imagen"
+                                        }
+                                }
+                        },
+                        series: [{
+                        name: 'Compras por proveedor',
+                                type: 'pie',
+                                radius: ['35%', '55%'],
+                                itemStyle: {
+                                normal: {
+                                label: {
+                                show: true
+                                },
+                                        labelLine: {
+                                        show: true
+                                        }
+                                },
+                                        emphasis: {
+                                        label: {
+                                        show: true,
+                                                position: 'center',
+                                                textStyle: {
+                                                fontSize: '14',
+                                                        fontWeight: 'normal'
+                                                }
+                                        }
+                                        }
+                                },
+                                data: [
+                {%for cantidadPro in cantPorProveedor %}
+                                    {
+                                    value:{{cantidadPro[2]}},
+                                            name: '{{cantidadPro[1]}}'
+                                    },
+                {%endfor%}
+                                    ]
+                            }]
+                    });
+                    }
+
+
+
+            </script>
+            {% endblock %}
+

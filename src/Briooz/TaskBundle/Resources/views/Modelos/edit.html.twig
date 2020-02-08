@@ -1,0 +1,81 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_modelo_index')}}">Modelos</a> » <strong>Editar modelo</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Editar modelo</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus-circle" aria-hidden="true"></i> <strong>Editar</strong></div>
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 5px;height:40px;">
+                    <div class="col-xs-12 col-md-6">
+                        <form action="{{path('briooz_modelo_update')}}" method="POST" id="form">
+                            <input type="hidden" id="idmodelo" name="idmodelo" value="{{ modelo.id }}">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>Modelo:</label>
+                                    <input type="text" placeholder="(*) Modelo" name="modelo" id="modelo" class="form-control" value="{{ modelo.name }}"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_modelo"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Descripción:</label>
+                                    <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">{{ modelo.descripcion }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoria:</label>
+                                    <select name="categoria" id="categoria" class="form-control">
+                                        <option value="1" {% if modelo.categoria==1 %} selected {% endif %}>Hombre</option>
+                                        <option value="2" {% if modelo.categoria==2 %} selected {% endif %}>Mujer</option>
+                                        <option value="3" {% if modelo.categoria==3 %} selected {% endif %}>Mixto</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <a href="#" id="boton-enviar"  class="btn btn-success"><i class="fas fa-save"></i> Guardar</a>
+                                    <a href="#" id="boton-cancelar"  class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                                </div>
+                                <div class="row" style="margin-bottom: 7px;">
+                                    <div class="col-xs-12" style="text-align:left;">
+                                        <span class="text-danger"><strong>(*) campo obligatorio</strong></span>
+                                    </div>
+                                </div>
+                            </fieltset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+        $(function () {
+            $('#boton-cancelar').click(function (e) {
+                e.preventDefault();
+                $('#form')[0].reset();
+            });
+
+            $('#boton-enviar').click(function (e) {
+                e.preventDefault();
+
+                var enviar = true;
+                var modelo = $('#color');
+                var error_modelo = $('#error_modelo');
+
+                if (modelo.val() == "") {
+                    enviar = false;
+                    error_modelo.removeClass('hidden');
+                    modelo.css('border-color', '#a94442');
+                    modelo.focus();
+                }
+
+                if (enviar == true) {
+                    $('#form').submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}

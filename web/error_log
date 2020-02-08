@@ -1,0 +1,8 @@
+[28-Apr-2019 20:16:11 America/New_York] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php:43
+Stack trace:
+#0 /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOConnection.php(43): PDO->__construct('mysql:host=127....', 'root', NULL, Array)
+#1 /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/PDOMySql/Driver.php(45): Doctrine\DBAL\Driver\PDOConnection->__construct('mysql:host=127....', 'root', NULL, Array)
+#2 /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(360): Doctrine\DBAL\Driver\PDOMySql\Driver->connect(Array, 'root', NULL, Array)
+#3 /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Connection.php(429): Doctrine\DBAL\Connection->connect()
+#4 /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DB in /home/adcdxbdj/sgi.calzadobuchelli.com/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php on line 103
+[29-Apr-2019 22:15:04 America/New_York] PHP Fatal error:  Call to undefined method Briooz\TaskBundle\Entity\VentaProducto::getDescuento() in /home/adcdxbdj/sgi.calzadobuchelli.com/src/Briooz/VentasBundle/Controller/VentasController.php on line 133

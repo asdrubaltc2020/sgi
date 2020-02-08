@@ -1,0 +1,36 @@
+briooz_formapago_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:FormasPago:index }
+    
+briooz_formapago_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:FormasPago:delete}
+    methods: [POST,DELETE]
+    
+briooz_formapago_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:FormasPago:add }
+    
+briooz_formapago_creado:
+    path:     /formaspagoCreado
+    defaults: { _controller: BrioozTaskBundle:FormasPago:creado}
+    methods: POST
+    
+briooz_formapago_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:FormasPago:edit, id: null }
+    
+briooz_formapago_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:FormasPago:update }
+    methods: [POST, PUT]
+    
+briooz_formapago_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:FormasPago:edit
+        path: /formaspago/edit/{id}
+        permanent: true
+
+
+

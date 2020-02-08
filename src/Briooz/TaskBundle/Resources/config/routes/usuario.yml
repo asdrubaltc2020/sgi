@@ -1,0 +1,74 @@
+briooz_usuario_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Usuario:index }
+    
+briooz_usuario_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Usuario:add }
+    
+briooz_usuario_creado:
+    path:     /creado
+    defaults: { _controller: BrioozTaskBundle:Usuario:creado }
+    methods: POST
+    
+briooz_usuario_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Usuario:edit, id: null }
+        
+briooz_usuario_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Usuario:update }
+    methods: [POST, PUT]
+    
+briooz_usuario_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Usuario:edit
+        path: /usuario/edit/{id}
+        permanent: true
+
+        
+briooz_usuario_delete:
+    path:     /delete/{id}
+    defaults: { _controller: BrioozTaskBundle:Usuario:delete }    
+    methods: [POST, DELETE]
+    
+briooz_usuario_block:
+    path:     /block/{id}
+    defaults: { _controller: BrioozTaskBundle:Usuario:block }    
+    methods: [POST]
+    
+briooz_usuario_change_password:
+    path:     /change
+    defaults: { _controller: BrioozTaskBundle:Usuario:changePassword }    
+    methods: [POST]
+    
+briooz_usuario_desblock:
+    path:     /desblock/{id}
+    defaults: { _controller: BrioozTaskBundle:Usuario:desblock }    
+    methods: [POST]
+    
+briooz_usuario_subir_foto:
+    path:     /subirfotoAjax
+    defaults: { _controller: BrioozTaskBundle:Usuario:subirFotoPerfilAjax }
+    methods: [POST, PUT]
+    
+    
+briooz_usuario_password:
+    path:     /reset_form
+    defaults: { _controller: BrioozTaskBundle:Usuario:password }    
+    methods: [GET] 
+    
+briooz_usuario_reset:
+    path:     /reset
+    defaults: { _controller: BrioozTaskBundle:Usuario:reset }    
+    methods: [POST]
+    
+briooz_usuario_codigo:
+    path:     /codigo
+    defaults: { _controller: WOMTaskBundle:Usuario:codigo }    
+    methods: [POST] 
+    
+    
+    
+    

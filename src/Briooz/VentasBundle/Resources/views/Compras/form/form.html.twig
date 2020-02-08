@@ -1,0 +1,8 @@
+
+{{ form_start(form,{'attr':{'class':'form-delete','id':id|default('form')}})}}
+{{ form_widget(form) }}
+{% if width_submit is not defined or width_submit==true %}
+<input type="button" class="btn btn-danger"  onclick="confirmDelete()" value="Eliminar Compra"/>
+{% endif %}
+{{ form_end(form) }}
+

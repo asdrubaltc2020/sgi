@@ -1,0 +1,49 @@
+briooz_zapato_index:
+    path:     /list
+    defaults: { _controller: BrioozTaskBundle:Zapatos:index }
+    methods: GET
+    
+briooz_zapato_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Zapatos:delete}
+    methods: [POST,DELETE]
+    
+briooz_zapato_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Zapatos:add }
+    
+briooz_zapato_creado:
+    path:     /zapatoCreado
+    defaults: { _controller: BrioozTaskBundle:Zapatos:creado}
+    methods: POST
+    
+briooz_zapato_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Zapatos:edit, id: null }
+    
+briooz_zapato_ver:
+    path:     /ver/{id}
+    defaults: { _controller: BrioozTaskBundle:Zapatos:ver }
+    
+briooz_zapato_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Zapatos:update }
+    methods: [POST, PUT]
+    
+briooz_zapato_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Zapatos:edit
+        path: /zapatos/edit/{id}
+        permanent: true
+
+briooz_zapato_buscar:
+    path:     /buscar
+    defaults: { _controller: BrioozTaskBundle:Zapatos:buscar }
+    methods: [POST, PUT]
+    
+briooz_zapato_buscar_compra:
+    path:     /buscar_compra
+    defaults: { _controller: BrioozTaskBundle:Zapatos:buscarComprarAjax }
+    methods: [POST, PUT]
+

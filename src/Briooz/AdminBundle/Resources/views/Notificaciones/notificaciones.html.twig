@@ -1,0 +1,42 @@
+<div class="top_nav">
+    <div class="nav_menu">
+        <nav>
+            <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="tools-bar">
+                <a href="{{path('briooz_usuario_homepage')}}" class="btn btn-default btn-tools" data-toggle="tooltip" data-placement="bottom" title="Panel principal"><i class="fas fa-home btns-tools"></i></a>
+                <a href="{{path('briooz_venta_add')}}" class="btn btn-success btn-tools" data-toggle="tooltip" data-placement="bottom" title="Nueva venta"><i class="fas fa-cart-plus btns-tools"></i></a>
+                <a href="{{path('briooz_zapato_add')}}" class="btn btn-primary btn-tools" data-toggle="tooltip" data-placement="bottom" title="Nuevo producto"><i class="fas fa-box-open btns-tools"></i></a>
+                <a href="{{path('briooz_compra_add')}}" class="btn btn-default btn-tools" data-toggle="tooltip" data-placement="bottom" title="Nueva compra"><i class="fas fa-truck btns-tools"></i></a>
+                <a href="{{path('briooz_proveedor_add')}}" class="btn btn-default btn-tools" data-toggle="tooltip" data-placement="bottom" title="Nuevo proveedor"><i class="fas fa-people-carry btns-tools"></i></a>
+                <a href="{{path('briooz_cliente_add')}}" class="btn btn-default btn-tools" data-toggle="tooltip" data-placement="bottom" title="Nuevo cliente"><i class="fas fa-male btns-tools"></i></a>
+                <a href="{{path('briooz_usuario_logout')}}" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="Salir"><i class="fas fa-power-off btns-tools"></i></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="{{asset('public/images/perfil-falso.jpg')}}" alt=""> {{app.user.nombre}} {{app.user.apellidos}}
+                        <span class=" fa fa-angle-down"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="javascript:;"><i class="fas fa-user-cog"></i> Perfil</a></li>
+                        <li><a href="javascript:;"><i class="fas fa-question-circle"></i> Ayuda</a></li>
+                        <li><a href="{{path('briooz_usuario_logout')}}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Salir</a></li>
+                    </ul>
+                </li>
+                <li role="presentation" class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge bg-green">0</span>
+                    </a>
+                    <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                        <li>
+
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

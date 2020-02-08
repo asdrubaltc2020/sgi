@@ -1,0 +1,34 @@
+briooz_bodega_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Bodegas:index }
+    
+briooz_bodega_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Bodegas:delete}
+    methods: [POST,DELETE]
+    
+briooz_bodega_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Bodegas:add }
+    
+briooz_bodega_creado:
+    path:     /bodegaCreado
+    defaults: { _controller: BrioozTaskBundle:Bodegas:creado}
+    methods: POST
+    
+briooz_bodega_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Bodegas:edit,id:null }
+    
+briooz_bodega_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Bodegas:update }
+    methods: [POST, PUT]
+    
+briooz_bodega_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Bodegas:edit
+        path: /bodegaes/edit/{id}
+        permanent: true
+

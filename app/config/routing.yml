@@ -1,0 +1,19 @@
+briooz_email:
+    resource: "@BrioozEmailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+briooz_admin:
+    resource: "@BrioozAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+briooz_ventas:
+    resource: "@BrioozVentasBundle/Resources/config/routing.yml"
+    prefix:   /
+
+briooz_task:
+    resource: "@BrioozTaskBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

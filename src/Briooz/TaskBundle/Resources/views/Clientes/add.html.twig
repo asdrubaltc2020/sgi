@@ -1,0 +1,136 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_cliente_index')}}">Clientes</a> » <strong>Nuevo cliente</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Nuevo cliente</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus-circle" aria-hidden="true"></i> <strong>Nuevo</strong></div>
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 5px;height:40px;">
+                    <div class="col-xs-12 col-md-6">
+                        <form action="{{path('briooz_cliente_creado')}}" method="POST" id="form">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>Tipo de cliente <i class="fas fa-sort-down"></i></label>
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="tipocliente" id="tipo1" value="PERSONA" checked class="tipocliente"> Persona
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="tipocliente" id="tipo2" value="EMPRESA" class="tipocliente"> Empresa
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group hidden" id="grupo_nombre_empresa">
+                                    <label>Nombre empresa <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Nombre empresa" name="nombreempresa" id="nombreempresa" class="form-control"/>
+                                </div>
+                                <div class="form-group hidden" id="grupo_razon_social">
+                                    <label>Razón social <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Razón social" name="razonsocial" id="razonsocial" class="form-control"/>
+                                </div>
+                                <div class="form-group" id="grupo_nombres">
+                                    <label>Nombres <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Nombres completos" name="nombres" id="nombres" class="form-control"/>
+                                </div>
+                                <div class="form-group" id="grupo_apellidos">
+                                    <label>Apellidos <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Apellidos completos" name="apellidos" id="apellidos" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Celular <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Celular" name="celular" id="celular" class="form-control" maxlength="11"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Teléfono <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Teléfono" name="telefono" id="telefono" class="form-control" maxlength="10"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Email" name="email" id="email" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>CI <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="Cedula de identidad" name="ci" id="ci" class="form-control" maxlength="10"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>RUC <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="RUC" name="ruc" id="ruc" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Dirección <i class="fas fa-sort-down"></i></label>
+                                    <textarea placeholder="Dirección" name="direccion" id="direccion" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group"> 
+                                    <a href="#" id="boton-enviar"  class="btn btn-success"><i class="fas fa-save"></i> Guardar</a>
+                                    <a href="#" id="boton-cancelar"  class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                                </div>
+                            </fieltset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+        $(function () {
+            $('#boton-cancelar').click(function (e) {
+                e.preventDefault();
+                $('#form')[0].reset();
+            });
+
+            $('#boton-enviar').click(function (e) {
+                e.preventDefault();
+
+                var enviar = true;
+
+                if (enviar == true) {
+                    $('#form').submit();
+                }
+            });
+
+            $('.tipocliente').click(function (e) {
+                var val = $(this).val();
+                var grupo_nombre_empresa = $('#grupo_nombre_empresa');
+                var grupo_razon_social = $('#grupo_razon_social');
+                var grupo_nombres = $('#grupo_nombres');
+                var grupo_apellidos = $('#grupo_apellidos');
+
+                if (val == 'PERSONA') {
+                    if (!grupo_nombre_empresa.hasClass('hidden')) {
+                        grupo_nombre_empresa.addClass('hidden');
+                    }
+                    if (!grupo_razon_social.hasClass('hidden')) {
+                        grupo_razon_social.addClass('hidden');
+                    }
+                    if (grupo_nombres.hasClass('hidden')) {
+                        grupo_nombres.removeClass('hidden');
+                    }
+                    if (grupo_apellidos.hasClass('hidden')) {
+                        grupo_apellidos.removeClass('hidden');
+                    }
+                } else {
+                    if (grupo_nombre_empresa.hasClass('hidden')) {
+                        grupo_nombre_empresa.removeClass('hidden');
+                    }
+                    if (grupo_razon_social.hasClass('hidden')) {
+                        grupo_razon_social.removeClass('hidden');
+                    }
+                    if (!grupo_nombres.hasClass('hidden')) {
+                        grupo_nombres.addClass('hidden');
+                    }
+                    if (!grupo_apellidos.hasClass('hidden')) {
+                        grupo_apellidos.addClass('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

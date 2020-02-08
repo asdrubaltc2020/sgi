@@ -1,0 +1,69 @@
+briooz_venta_index:
+    path:     /
+    defaults: { _controller: BrioozVentasBundle:Ventas:index }
+    
+briooz_venta_delete:
+    path:     /delete
+    defaults: { _controller: BrioozVentasBundle:Ventas:delete}
+    methods: [POST,DELETE]
+    
+briooz_venta_add:
+    path:     /add
+    defaults: { _controller: BrioozVentasBundle:Ventas:add }
+    
+briooz_venta_creado:
+    path:     /ventacreada
+    defaults: { _controller: BrioozVentasBundle:Ventas:creado}
+    methods: POST
+    
+briooz_venta_buscar_producto:
+    path:     /ventabuscarproducto
+    defaults: { _controller: BrioozVentasBundle:Ventas:buscarProducto}
+    methods: [POST,GET]
+    
+briooz_venta_buscar_cliente:
+    path:     /ventabuscarcliente
+    defaults: { _controller: BrioozVentasBundle:Ventas:buscarcliente}
+    methods: POST
+    
+briooz_venta_add_cliente_ajax:
+    path:     /ventaaddclienteajax
+    defaults: { _controller: BrioozVentasBundle:Ventas:addCliente}
+    methods: POST
+    
+briooz_venta_add_producto_ajax:
+    path:     /ventaaddproductoajax
+    defaults: { _controller: BrioozVentasBundle:Ventas:addProductoAjax}
+    methods: POST
+    
+briooz_venta_load_factura_ajax:
+    path:     /cargarfacturaajax
+    defaults: { _controller: BrioozVentasBundle:Ventas:cargarFacturaAjax}
+    methods: POST
+
+briooz_venta_buscar_ajax:
+        path:     /buscarventa
+        defaults: { _controller: BrioozVentasBundle:Ventas:buscarVentaAjax}
+        methods: POST
+
+briooz_venta_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozVentasBundle:Ventas:edit, id:null }
+    
+briooz_venta_update:
+    path:     /update
+    defaults: { _controller: BrioozVentasBundle:Ventas:update }
+    methods: [POST, PUT]
+    
+briooz_venta_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozVentasBundle:Ventas:edit
+        path: /ventas/edit/{id}
+        permanent: true
+
+briooz_venta_print:
+    path:     /printtest
+    defaults: { _controller: BrioozVentasBundle:Ventas:printTest}
+    methods: GET
+

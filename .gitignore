@@ -1,0 +1,14 @@
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+/app/phpunit.xml
+/build/
+/vendor/
+/composer.phar
+/nbproject/
+/.idea/
+quotes.iml
+/web/uploads/*
+/app/config/parameters.yml
+

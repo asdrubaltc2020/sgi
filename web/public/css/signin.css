@@ -1,0 +1,66 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background:url(../images/fondo.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="text"] {
+    margin-bottom: 0px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.contenedor-login{
+    width:100%;
+    max-width: 700px;
+    margin: 100px auto;
+    background-color: rgba(255,255,255,0.2);
+}
+
+.header-main{
+    background-color: #66696B;
+    padding:20px 15px;
+}
+
+.footer-container{
+    background-color: #66696B;
+    color:white;
+    font-size: 12px;
+    padding: 7px 15px;
+    margin-top: 25px;
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        background-image: url(../images/background-photo-mobile-devices.jpg);
+    }
+}

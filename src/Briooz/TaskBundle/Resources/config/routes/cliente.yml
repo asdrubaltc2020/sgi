@@ -1,0 +1,39 @@
+briooz_cliente_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Clientes:index }
+    
+briooz_cliente_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Clientes:delete}
+    methods: [POST,DELETE]
+    
+briooz_cliente_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Clientes:add }
+    
+briooz_cliente_creado:
+    path:     /clienteCreado
+    defaults: { _controller: BrioozTaskBundle:Clientes:creado}
+    methods: POST
+    
+briooz_cliente_creado_ajax:
+    path:     /clienteCreadoAjax
+    defaults: { _controller: BrioozTaskBundle:Clientes:creadoAjax}
+    methods: POST
+    
+briooz_cliente_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Clientes:edit, id:null }
+    
+briooz_cliente_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Clientes:update }
+    methods: [POST, PUT]
+    
+briooz_cliente_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Clientes:edit
+        path: /clientees/edit/{id}
+        permanent: true
+

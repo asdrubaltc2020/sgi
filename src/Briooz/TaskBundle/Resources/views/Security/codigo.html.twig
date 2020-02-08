@@ -1,0 +1,102 @@
+
+{% extends 'layout-home.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/signin.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div style="color:#fff;">
+        <a class="hiddenanchor" id="signup"></a>
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form action="{{ path('briooz_usuario_codigo') }}" method="post" id="form">
+                        <input type="hidden" name="password" value="{{password}}" />
+                        <input type="hidden" name="usuario" value="{{usuario.usuario}}" />
+                        <h1>Código de verificacion</h1>
+                        <p>Revise su correo electronico para obtener su codigo de verficicación</p>
+                        <div>
+                            <label style="float:left;">(*) Código de verificación:</label>
+                            <input type="text" id="codigo" class="form-control" name="codigo" placeholder="Código"/>
+                            <div class="campo_error hidden" id="error_password" style="margin-bottom: 25px;">Campo contraseña requerido</div>
+                        </div>
+                        {%if error==1%}
+                            <div class="campo_error" id="error_password" style="margin-bottom: 25px;">Código incorrecto</div>
+                        {%endif%}
+                        <div>
+                            <p>(*) Todos los campos son obligatorios</p>
+                            <a class="btn btn-primary btn-cambiar">Enviar código</a>
+                        </div>
+                        <div class="separator">
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><img src="{{asset('public/images/womtask2-logo.png')}}" style="height: 40px;margin-top: -8px;"> WOMTASK</h1>
+                                <p>©{{ "now"|date("Y") }} Todos los derechos reservados.<br/> Sistema de gestión de Agencia. WOMTASK</p>
+                            </div>
+                        </div>
+
+                    </form>
+                </section>
+            </div>
+
+        </div>
+    </div>  
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+
+        $(".btn-cambiar").click(function (e) {
+            var enviar = true;
+            var email = $('#email');
+            var password = $('#password');
+            var re_password = $('#re_password');
+
+
+            var error_email = $('#error_email');
+            var error_password = $('#error_password');
+            var error_re_password = $('#error_re_password');
+
+            if (email.val() == "") {
+                error_email.removeClass('hidden');
+                enviar = false;
+            } else {
+                error_email.addClass('hidden');
+            }
+
+            if (password.val() == "") {
+                error_password.removeClass('hidden');
+                enviar = false;
+            } else {
+                error_password.addClass('hidden');
+            }
+
+
+            if (re_password.val() == "") {
+                error_re_password.removeClass('hidden');
+                enviar = false;
+            } else {
+                error_re_password.addClass('hidden');
+
+                if (re_password.val() != password.val()) {
+                    error_re_password.removeClass('hidden');
+                    error_re_password.html('No coinciden las contraseñas');
+                    enviar = false;
+                } else {
+                    error_re_password.addClass('hidden');
+                }
+            }
+            console.log(enviar);
+
+            if (enviar == true) {
+                $('#form').submit();
+            }
+        });
+
+    </script>
+{% endblock %}
+

@@ -1,0 +1,69 @@
+briooz_pedido_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Peticion:index }
+    
+briooz_pedido_mispedidos:
+    path:     /mispedidos
+    defaults: { _controller: BrioozTaskBundle:Peticion:mispedidos }
+    
+briooz_pedido_gentelella:
+    path:     /gentelella
+    defaults: { _controller: BrioozTaskBundle:Peticion:gentelella }
+    
+briooz_pedido_add_actividad:
+    path:     /addActividad
+    defaults: { _controller: BrioozTaskBundle:Peticion:addActividad }
+    methods: POST
+    
+briooz_pedido_add_fichero:
+    path:     /addFichero
+    defaults: { _controller: BrioozTaskBundle:Peticion:addFichero}
+    methods: POST
+    
+briooz_pedido_add:
+    path:     /add/{id}
+    defaults: { _controller: BrioozTaskBundle:Peticion:add }
+    
+briooz_pedido_creado:
+    path:     /pedidoCreado
+    defaults: { _controller: BrioozTaskBundle:Peticion:creado}
+    methods: POST
+    
+briooz_pedido_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Peticion:edit}
+     
+briooz_pedido_save:
+    path:     /save
+    defaults: { _controller: BrioozTaskBundle:Peticion:save}
+    methods: [POST,PUT]
+
+briooz_pedido_add_tiempo:
+    path:     /addTiempo
+    defaults: { _controller: BrioozTaskBundle:Peticion:addTiempo}
+    methods: [POST,PUT]
+    
+briooz_pedido_add_cambio:
+    path:     /addCambio
+    defaults: { _controller: BrioozTaskBundle:Peticion:addCambio}
+    methods: [POST,PUT] 
+    
+briooz_pedido_add_entregable:
+    path:     /addCambio
+    defaults: { _controller: BrioozTaskBundle:Peticion:addEntregable}
+    methods: [POST,PUT]  
+    
+briooz_pedido_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Peticion:delete}
+    methods: [POST,DELETE]
+    
+briooz_pedido_delete_ajax:
+    path:     /deleteAjax
+    defaults: { _controller: BrioozTaskBundle:Peticion:deleteAjax}
+    methods: [POST,DELETE]  
+    
+briooz_pedido_buscar_ajax:
+    path:     /buscarAjax
+    defaults: { _controller: BrioozTaskBundle:Peticion:buscarAjax}
+    methods: [POST,PUT] 

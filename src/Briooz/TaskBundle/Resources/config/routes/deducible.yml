@@ -1,0 +1,35 @@
+briooz_deducible_index:
+    path:     /
+    defaults: { _controller: BrioozTaskBundle:Deducibles:index }
+    
+briooz_deducible_delete:
+    path:     /delete
+    defaults: { _controller: BrioozTaskBundle:Deducibles:delete}
+    methods: [POST,DELETE]
+    
+briooz_deducible_add:
+    path:     /add
+    defaults: { _controller: BrioozTaskBundle:Deducibles:add }
+    
+briooz_deducible_creado:
+    path:     /deducibleCreado
+    defaults: { _controller: BrioozTaskBundle:Deducibles:creado}
+    methods: POST
+    
+briooz_deducible_edit:
+    path:     /edit/{id}
+    defaults: { _controller: BrioozTaskBundle:Deducibles:edit, id: null }
+    
+briooz_deducible_update:
+    path:     /update
+    defaults: { _controller: BrioozTaskBundle:Deducibles:update }
+    methods: [POST, PUT]
+    
+briooz_deducible_redirect_edit:
+    path: /update
+    defaults:
+        _controller: BrioozTaskBundle:Deducibles:edit
+        path: /deducibles/edit/{id}
+        permanent: true
+
+

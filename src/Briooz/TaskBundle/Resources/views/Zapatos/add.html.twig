@@ -1,0 +1,395 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_zapato_index',{'cat':1})}}">Productos</a> » <strong>Nuevo producto</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Nuevo producto</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus-circle" aria-hidden="true"></i> <strong>Nuevo</strong></div>
+            <div class="panel-body">
+                <form action="{{path('briooz_zapato_creado')}}" method="POST" id="form">
+                    <div class="row" style="margin-bottom: 5px;">
+                        <div class="col-xs-12 col-md-6">
+                            <fieltset>
+                                <div class="form-group">
+                                    <label>Código Interno<i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Código interno" name="codigointerno" id="codigointerno" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_codigointerno"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Categoria<i class="fas fa-sort-down"></i></label>
+                                    <select name="categoria" id="categoria" class="form-control">
+                                        <option value="0">[ Categoria ]</option>
+                                        {%for categoria in categorias %}
+                                            <option value="{{categoria.id}}">{{categoria.name}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_categoria"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Modelo<i class="fas fa-sort-down"></i></label>
+                                    <select name="modelo" id="modelo" class="form-control">
+                                        <option value="0">[ Modelo ]</option>
+                                        {%for modelo in modelos %}
+                                            <option value="{{modelo.id}}">{{modelo.name}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_modelo"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Color<i class="fas fa-sort-down"></i></label>
+                                    <select name="color" id="color" class="form-control">
+                                        <option value="0">[ Color ]</option>
+                                        {%for color in colores %}
+                                            <option value="{{color.id}}">{{color.name}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_color"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Proveedor<i class="fas fa-sort-down"></i></label>
+                                    <select name="proveedor" id="proveedor" class="form-control">
+                                        <option value="0">[ Proveedor ]</option>
+                                        {%for proveedor in proveedores %}
+                                            <option value="{{proveedor.id}}">{{proveedor.empresa}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_proveedor"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Código proveedor<i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Código proveedor" name="codigoproveedor" id="codigoproveedor" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_codigoproveedor"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Taco<i class="fas fa-sort-down"></i></label>
+                                    <select name="taco" id="taco" class="form-control">
+                                        <option value="0">[ Taco ]</option>
+                                        {%for taco in tacos %}
+                                            <option value="{{taco.id}}">{{taco.descripcion}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_taco"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bodega<i class="fas fa-sort-down"></i></label>
+                                    <select name="bodega" id="bodega" class="form-control">
+                                        <option value="0">[ Bodega ]</option>
+                                        {%for bodega in bodegas %}
+                                            <option value="{{bodega.id}}">{{bodega.descripcion}}</option>
+                                        {%endfor%}
+                                    </select>
+                                    <div class="text-danger msj-error-form hidden" id="error_bodega"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Fila <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Fila" name="fila" id="fila" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_fila"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Costo <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) Precio" name="precio" id="precio" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_precio"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>PVP <i class="fas fa-sort-down"></i></label>
+                                    <input type="text" placeholder="(*) PVP" name="pvp" id="pvp" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_pvp"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Calificación <i class="fas fa-sort-down"></i></label>
+                                    <select name="calificacion" id="calificacion" class="form-control">
+                                        <option value="0">[ Seleccione la calificacion del producto]</option>
+                                        <option value="a">A</option>
+                                        <option value="aa">AA</option>
+                                        <option value="aaa">AAA</option>
+                                    </select>
+                                </div>
+                            </fieltset>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <div class="form-group">
+                                <label>Tallas <i class="fas fa-sort-down"></i></label>
+                                    {% for talla in tallas %}
+                                    <div>
+                                        <label>
+                                            <span class="numero_tallas">{{talla.descripcion}}</span> <input type="checkbox" class="js-switch tallaCheck small" name="talla{{talla.id}}"  id="talla{{talla.id}}" data-id="{{talla.id}}" value="{{talla.id}}"/> 
+                                            <input type="number"  name="cantidadtalla{{talla.id}}" id="cantidadtalla{{talla.id}}" value="0" placeholder="0" min="0"  class="form-control hidden" style="width: 75px;display: inline-block;margin-left: 10px;"/>
+                                        </label>
+                                    </div>
+                                {%endfor%}
+                            </div>
+                            <div class="form-group">
+                                <label>Detalles <i class="fas fa-sort-down"></i></label>
+                                <textarea name="detalle" id="detalle" class="form-control" rows="8" placeholder="Detalles del zapato"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Compra o Lote <i class="fas fa-sort-down"></i></label>
+                                <input type="text" name="compra" id="compra" class="form-control" placeholder="Escriba número de lote o factura">
+                                <div id="cont-result-compra"></div>
+                                <div class="text-danger msj-error-form hidden" id="error_compra"><i class="fas fa-exclamation-triangle"></i> Debe asociar el producto a una compra</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Mínimo <i class="fas fa-sort-down"></i></label>
+                                <input type="number" name="minimo" id="minimo" class="form-control" value="1" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label>Máximo <i class="fas fa-sort-down"></i></label>
+                                <input type="number" name="maximo" id="maximo" class="form-control" value="20" min="0">
+                            </div>
+
+                            <input type="hidden" id="id_compra_selected" name="id_compra_selected" value="" />
+                        </div>
+                    </div>
+                    <div class="form-group"> 
+                        <a href="#" id="boton-enviar"  class="btn btn-success"><i class="fas fa-save"></i> Guardar</a>
+                        <a href="#" id="boton-cancelar"  class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                    </div>
+                    <div class="row" style="margin-bottom: 7px;">
+                        <div class="col-xs-12" style="text-align:left;">
+                            <span class="text-danger"><strong>(*) campo obligatorio</strong></span>
+                        </div>
+                    </div>
+                </form>
+
+                <form id="form-buscar-compra-ajax" method="POST" action="{{path('briooz_zapato_buscar_compra')}}">
+                </form>
+
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+        $(function () {
+            $('#compra').keyup(function (e) {
+                
+                var compra = $('#compra');
+                var form = $('#form-buscar-compra-ajax');
+                var url = form.attr('action');
+                var data = {'compra': compra.val()};
+
+               if(compra.val()!=""){
+                   $.post(url, data, function (result) {
+
+                       var compras = result.compras;
+                       var html = "";
+
+                       if (compras.length>0){
+                           html += " <div class='table-responsive'>";
+                           html += "<table class='table table-striped table-hover'>";
+                           html += "<thead>";
+                           html += "<tr>";
+                           html += "<th width='5%'>Id</th>";
+                           html += "<th width='15%'>Lote</th>";
+                           html += "<th width='30%'>Factura</th>";
+                           html += "<th width='20%'>Proveedor</th>";
+                           html += "<th width='25%'>Fecha</th>";
+                           html += "<th width='5%'></th>";
+                           html += "</tr>";
+                           html += "</thead>";
+                           html += "<tbody>";
+
+                           $.each(compras, function (index) {
+                               html += "<tr data-id='" + compras[index]['id'] + "'>";
+                               html += "<td>" + compras[index]['id'] + "</td>";
+                               html += "<td>" + compras[index]['lote'] + "</td>";
+                               html += "<td>" + compras[index]['factura'] + "</td>";
+                               html += "<td>" + compras[index]['proveedor'] + "</td>";
+                               html += "<td>" + compras[index]['fecha'] + "</td>";
+                               html += "<td><input type='radio' name='compraselect' value='" + compras[index]['id'] + "' class='radioselectcompra'></td>";
+                               html += "</tr>";
+                           });
+
+                           html += "</tbody>";
+                           html += "</table>";
+                           html += "</div>";
+                       }else{
+                           html+="<p>No existen resultados para mostrar</p>"
+                       }
+
+                       $('#cont-result-compra').html(html);
+                   })
+               }else{
+                   $('#cont-result-compra').html('')
+               }
+
+            });
+
+            $('#cont-result-compra').on('click', '.radioselectcompra', function () {
+                var row = $(this).parents('tr');
+                var id = row.data('id');
+                $('#id_compra_selected').val(id);
+            });
+
+
+
+            $('.tallaCheck').change(function (e) {
+                var id = $(this).data('id');
+                var idCantidad = "#cantidadtalla" + id;
+
+                if ($(this).is(':checked')) {
+                    $(idCantidad).removeClass('hidden');
+                } else {
+                    $(idCantidad).addClass('hidden');
+                }
+
+            });
+
+
+            $('#boton-cancelar').click(function (e) {
+                e.preventDefault();
+                $('#form')[0].reset();
+            });
+
+            $('#boton-enviar').click(function (e) {
+                e.preventDefault();
+
+                var enviar = true;
+                var codigointerno = $('#codigointerno');
+                var categoria = $('#categoria');
+                var modelo = $('#modelo');
+                var color = $('#color');
+                var taco = $('#taco');
+                var proveedor = $('#proveedor');
+                var codigoproveedor = $('#codigoproveedor');
+                var bodega = $('#bodega');
+                var fila = $('#fila');
+                var precio = $('#precio');
+                var pvp = $('#pvp');
+                var id_compra = $('#id_compra_selected');
+
+                var error_codigointerno = $('#error_codigointerno');
+                var error_categoria = $('#error_categoria');
+                var error_modelo = $('#error_modelo');
+                var error_color = $('#error_color');
+                var error_taco = $('#error_taco');
+                var error_proveedor = $('#error_proveedor');
+                var error_codigoproveedor = $('#error_codigoproveedor');
+                var error_bodega = $('#error_bodega');
+                var error_fila = $('#error_fila');
+                var error_precio = $('#error_precio');
+                var error_pvp = $('#error_pvp');
+                var error_compra = $('#error_compra');
+
+
+
+
+                if (codigointerno.val() == "") {
+                    enviar = false;
+                    error_codigointerno.removeClass('hidden');
+                    codigointerno.css('border-color', '#a94442');
+                } else {
+                    error_codigointerno.addClass('hidden');
+                    codigointerno.css('border-color', '#ccc');
+                }
+
+                if (id_compra.val() == "") {
+                    enviar = false;
+                    error_compra.removeClass('hidden');
+                } else {
+                    error_compra.addClass('hidden');
+                }
+
+                if (categoria.val() == 0) {
+                    enviar = false;
+                    error_categoria.removeClass('hidden');
+                    categoria.css('border-color', '#a94442');
+                } else {
+                    error_categoria.addClass('hidden');
+                    categoria.css('border-color', '#ccc');
+                }
+
+                if (modelo.val() == 0) {
+                    enviar = false;
+                    error_modelo.removeClass('hidden');
+                    modelo.css('border-color', '#a94442');
+                } else {
+                    error_modelo.addClass('hidden');
+                    modelo.css('border-color', '#ccc');
+                }
+
+                if (color.val() == 0) {
+                    enviar = false;
+                    error_color.removeClass('hidden');
+                    color.css('border-color', '#a94442');
+                } else {
+                    error_color.addClass('hidden');
+                    color.css('border-color', '#ccc');
+                }
+
+                if (taco.val() == 0) {
+                    enviar = false;
+                    error_taco.removeClass('hidden');
+                    taco.css('border-color', '#a94442');
+                } else {
+                    error_taco.addClass('hidden');
+                    taco.css('border-color', '#ccc');
+                }
+
+                if (proveedor.val() == 0) {
+                    enviar = false;
+                    error_proveedor.removeClass('hidden');
+                    proveedor.css('border-color', '#a94442');
+                } else {
+                    error_proveedor.addClass('hidden');
+                    proveedor.css('border-color', '#ccc');
+                }
+
+                if (codigoproveedor.val() == "") {
+                    enviar = false;
+                    error_codigoproveedor.removeClass('hidden');
+                    codigoproveedor.css('border-color', '#a94442');
+                } else {
+                    error_codigoproveedor.addClass('hidden');
+                    codigoproveedor.css('border-color', '#ccc');
+                }
+
+                if (bodega.val() == 0) {
+                    enviar = false;
+                    error_bodega.removeClass('hidden');
+                    bodega.css('border-color', '#a94442');
+                } else {
+                    error_bodega.addClass('hidden');
+                    bodega.css('border-color', '#ccc');
+                }
+
+                if (fila.val() == "") {
+                    enviar = false;
+                    error_fila.removeClass('hidden');
+                    fila.css('border-color', '#a94442');
+                } else {
+                    error_fila.addClass('hidden');
+                    fila.css('border-color', '#ccc');
+                }
+
+                if (precio.val() == "") {
+                    enviar = false;
+                    error_precio.removeClass('hidden');
+                    precio.css('border-color', '#a94442');
+                } else {
+                    error_precio.addClass('hidden');
+                    precio.css('border-color', '#ccc');
+                }
+
+                if (pvp.val() == "") {
+                    enviar = false;
+                    error_pvp.removeClass('hidden');
+                    pvp.css('border-color', '#a94442');
+                } else {
+                    error_pvp.addClass('hidden');
+                    pvp.css('border-color', '#ccc');
+                }
+
+
+                if (enviar == true) {
+                    $('#form').submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}

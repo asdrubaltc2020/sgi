@@ -1,0 +1,67 @@
+{% extends 'gentelella.html.twig' %}
+{% block body %}
+    <section id="breadcrumb-container">
+        Administración » <a href="{{path('briooz_talla_index')}}">Tallas</a> » <strong>Nueva talla</strong>
+    </section>
+    <section id="titulo-container">
+        <h2>Nueva talla</h2>
+    </section>
+    <section>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><i class="fa fa-plus-circle" aria-hidden="true"></i> <strong>Nueva</strong></div>
+            <div class="panel-body">
+                <div class="row" style="margin-bottom: 5px;height:40px;">
+                    <div class="col-xs-12 col-md-6">
+                        <form action="{{path('briooz_talla_creado')}}" method="POST" id="form">
+                            <fieltset>
+                                <div class="form-group">
+                                    <input type="text" placeholder="(*) Talla" name="talla" id="talla" class="form-control"/>
+                                    <div class="text-danger msj-error-form hidden" id="error_talla"><i class="fas fa-exclamation-triangle"></i> El campo no puede ser vacio</div>
+                                </div>
+                                <div class="form-group"> 
+                                    <a href="#" id="boton-enviar"  class="btn btn-success"><i class="fas fa-save"></i> Guardar</a>
+                                    <a href="#" id="boton-cancelar"  class="btn btn-danger"><i class="fas fa-times"></i> Cancelar</a>
+                                </div>
+                                <div class="row" style="margin-bottom: 7px;">
+                                    <div class="col-xs-12" style="text-align:left;">
+                                        <span class="text-danger"><strong>(*) campo obligatorio</strong></span>
+                                    </div>
+                                </div>
+                            </fieltset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
+{% endblock %}
+{% block javascripts %}
+    {{ parent()}}
+    <script>
+        $(function () {
+            $('#boton-cancelar').click(function (e) {
+                e.preventDefault();
+                $('#form')[0].reset();
+            });
+
+            $('#boton-enviar').click(function (e) {
+                e.preventDefault();
+
+                var enviar = true;
+                var talla = $('#talla');
+                var error_talla = $('#error_talla');
+
+                if (talla.val() == "") {
+                    enviar = false;
+                    error_talla.removeClass('hidden');
+                    talla.css('border-color', '#a94442');
+                    talla.focus();
+                }
+
+                if (enviar == true) {
+                    $('#form').submit();
+                }
+            });
+        });
+    </script>
+{% endblock %}
